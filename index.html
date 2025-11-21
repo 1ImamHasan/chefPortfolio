@@ -550,6 +550,13 @@
         </div>
       </div>
     </section>
+    <button
+  id="backToTopBtn"
+  class="fixed bottom-6 right-6 p-3 bg-amber-600 text-white rounded-full shadow-lg opacity-0 transition-opacity duration-300 z-50 hover:bg-amber-700"
+  aria-label="Back to top">
+  <i data-lucide="arrow-up" class="w-6 h-6"></i>
+</button>
+
 
     <script>
       // 1. Initialize Icons
@@ -608,6 +615,32 @@
           lucide.createIcons();
         });
       });
+          // ... আপনার বিদ্যমান JS কোড (Navbar, Mobile Menu, etc.) ...
+
+      // 6. Back to Top Button Logic
+      const backToTopBtn = document.getElementById('backToTopBtn');
+
+      // Show or hide the button based on scroll position
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0');
+          backToTopBtn.classList.add('opacity-100');
+        } else {
+          backToTopBtn.classList.remove('opacity-100');
+          backToTopBtn.classList.add('opacity-0');
+        }
+      });
+
+      // Smooth scroll to top when button is clicked
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      });
+
+      // 1. Initialize Icons (Ensure this is at the end to catch the new icon)
+      lucide.createIcons();
     </script>
   </body>
 </html>
