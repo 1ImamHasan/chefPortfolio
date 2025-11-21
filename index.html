@@ -1,646 +1,928 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Imam Hasan - Chef Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Imam Hasan - Chef Portfolio</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap");
 
-      body {
-        font-family: 'Playfair Display', serif;
-      }
+            body {
+                font-family: "Playfair Display", serif;
+            }
 
-      .font-sans {
-        font-family: 'Lato', sans-serif;
-      }
+            .font-sans {
+                font-family: "Lato", sans-serif;
+            }
 
-      /* Smooth Scrolling */
-      html {
-        scroll-behavior: smooth;
-      }
-    </style>
-  </head>
-  <body class="bg-[#1a1a1a] text-gray-300">
-    <nav
-      id="navbar"
-      class="fixed w-full z-50 transition-all duration-300 bg-transparent py-6">
-      <div class="container mx-auto px-6 flex justify-between items-center">
-        <div
-          class="text-amber-500 font-sans font-bold text-2xl tracking-widest border-2 border-amber-500 p-2">
-          IH
-        </div>
+            /* Testimonial Carousel CSS */
+            .carousel-container {
+                overflow: hidden; /* Hides content that's outside */
+                width: 100%;
+            }
 
-        <div
-          class="hidden md:flex space-x-8 font-sans text-sm tracking-widest uppercase">
-          <a href="#hero" class="hover:text-amber-500 transition-colors"
-            >Home</a
-          >
-          <a href="#about" class="hover:text-amber-500 transition-colors"
-            >About</a
-          >
-          <a href="#portfolio" class="hover:text-amber-500 transition-colors"
-            >Portfolio</a
-          >
-          <a href="#resume" class="hover:text-amber-500 transition-colors"
-            >Resume</a
-          >
-          <a href="#contact" class="hover:text-amber-500 transition-colors"
-            >Contact</a
-          >
-        </div>
+            .carousel-track {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+            }
 
-        <div class="md:hidden">
-          <button id="menuBtn" class="text-white focus:outline-none">
-            <i data-lucide="menu" id="menuIcon"></i>
-          </button>
-        </div>
-      </div>
+            .testimonial-slide {
+                flex: 0 0 100%; /* Each slide takes up 100% of the container width */
+                width: 100%;
+            }
 
-      <div
-        id="mobileMenu"
-        class="hidden md:hidden bg-[#2C2C2C] absolute w-full top-full left-0 py-4 shadow-xl">
-        <div
-          class="flex flex-col items-center space-y-4 font-sans uppercase tracking-wider text-sm">
-          <a href="#hero" class="mobile-link hover:text-amber-500">Home</a>
-          <a href="#about" class="mobile-link hover:text-amber-500">About</a>
-          <a href="#portfolio" class="mobile-link hover:text-amber-500"
-            >Portfolio</a
-          >
-          <a href="#resume" class="mobile-link hover:text-amber-500">Resume</a>
-          <a href="#contact" class="mobile-link hover:text-amber-500"
-            >Contact</a
-          >
-        </div>
-      </div>
-    </nav>
-
-    <section
-      id="hero"
-      class="relative h-screen flex items-center justify-center overflow-hidden">
-      <div class="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop"
-          alt="Fine Dining Background"
-          class="w-full h-full object-cover opacity-40" />
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/60 to-transparent"></div>
-      </div>
-      <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <p
-          class="text-amber-500 font-sans tracking-[0.3em] uppercase text-sm mb-4">
-          Trainee Chef Portfolio
-        </p>
-        <h1
-          class="text-5xl md:text-7xl font-sans font-bold text-white mb-6 tracking-tight">
-          IMAM HASAN
-        </h1>
-        <div class="h-1 w-24 bg-amber-600 mx-auto mb-8"></div>
-        <p class="text-xl md:text-2xl text-gray-300 font-light italic mb-10">
-          "Where Technique Meets Taste."
-        </p>
-        <a
-          href="#portfolio"
-          class="px-8 py-3 border border-amber-600 text-amber-500 font-sans uppercase tracking-widest hover:bg-amber-600 hover:text-white transition-all duration-300 inline-block">
-          Explore Portfolio
-        </a>
-      </div>
-      <div class="absolute bottom-10 w-full flex justify-center animate-bounce">
-        <i data-lucide="chevron-down" class="text-gray-500 w-8 h-8"></i>
-      </div>
-    </section>
-
-    <section id="about" class="py-20 bg-[#1f1f1f]">
-      <div class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-          <div class="w-full md:w-1/2 relative group">
-            <div
-              class="absolute inset-0 border-2 border-amber-600 transform translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300 hidden md:block"></div>
-            <img
-              src="photosImam/resume.jpg"
-              onerror="this.src='https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=800&auto=format&fit=crop'"
-              alt="Imam Hasan Chef"
-              class="w-full h-[500px] object-cover relative z-10 shadow-2xl filter grayscale hover:grayscale-0 transition-all duration-500" />
-          </div>
-          <div class="w-full md:w-1/2">
-            <h2
-              class="text-3xl md:text-4xl font-sans font-bold text-white mb-6">
-              The Chef's Table
-            </h2>
-            <p class="text-gray-400 leading-relaxed mb-6 text-lg">
-              Hello, I'm
-              <span class="text-amber-500 font-bold">Imam Hasan</span>. As a
-              dedicated Trainee Chef, I focus on the intersection of classic
-              tradition and modern innovation. My journey is defined by a
-              relentless pursuit of flavor balance and the art of plating.
-            </p>
-            <p class="text-gray-400 leading-relaxed mb-8">
-              Currently honing my techniques in modern fusion, my goal is to
-              create dining experiences that honor ingredients through
-              meticulous preparation and respect for the craft.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div
-                class="flex items-center space-x-4 bg-[#2C2C2C] p-4 rounded border-l-2 border-transparent hover:border-amber-600 transition-all">
-                <div class="text-amber-500">
-                  <i data-lucide="utensils-crossed"></i>
-                </div>
-                <div>
-                  <h4 class="text-white font-sans font-bold uppercase text-sm">
-                    Knife Skills
-                  </h4>
-                  <p class="text-gray-500 text-xs">Precision cuts & butchery</p>
-                </div>
-              </div>
-              <div
-                class="flex items-center space-x-4 bg-[#2C2C2C] p-4 rounded border-l-2 border-transparent hover:border-amber-600 transition-all">
-                <div class="text-amber-500"><i data-lucide="flame"></i></div>
-                <div>
-                  <h4 class="text-white font-sans font-bold uppercase text-sm">
-                    Sauté & Grill
-                  </h4>
-                  <p class="text-gray-500 text-xs">
-                    Temperature control mastery
-                  </p>
-                </div>
-              </div>
-              <div
-                class="flex items-center space-x-4 bg-[#2C2C2C] p-4 rounded border-l-2 border-transparent hover:border-amber-600 transition-all">
-                <div class="text-amber-500"><i data-lucide="award"></i></div>
-                <div>
-                  <h4 class="text-white font-sans font-bold uppercase text-sm">
-                    Plating
-                  </h4>
-                  <p class="text-gray-500 text-xs">
-                    Visual composition & aesthetics
-                  </p>
-                </div>
-              </div>
-              <div
-                class="flex items-center space-x-4 bg-[#2C2C2C] p-4 rounded border-l-2 border-transparent hover:border-amber-600 transition-all">
-                <div class="text-amber-500"><i data-lucide="chef-hat"></i></div>
-                <div>
-                  <h4 class="text-white font-sans font-bold uppercase text-sm">
-                    Menu Planning
-                  </h4>
-                  <p class="text-gray-500 text-xs">
-                    Costing & seasonal pairing
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="portfolio" class="py-24 bg-[#1a1a1a]">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-sans font-bold text-white mb-4">
-            Culinary Creations
-          </h2>
-          <div class="h-0.5 w-12 bg-amber-600 mx-auto"></div>
-          <p class="mt-4 text-gray-400 italic">
-            A selection of my recent work and experiments.
-          </p>
-        </div>
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          id="portfolio-grid">
-          <div
-            class="group relative h-80 overflow-hidden cursor-pointer bg-black">
-            <img
-              src="https://images.unsplash.com/photo-1676300185292-e238e43b3d5d?q=80&w=800&auto=format&fit=crop"
-              alt="Duck Breast"
-              class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
-            <div
-              class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60">
-              <span
-                class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2"
-                >Modern French</span
-              >
-              <h3 class="text-white text-2xl font-serif italic mb-2">
-                Pan-Seared Duck Breast
-              </h3>
-              <p class="text-gray-300 text-sm font-light">
-                Crispy skin duck breast with a cherry reduction and parsnip
-                purée.
-              </p>
-              <div class="mt-4 w-8 h-0.5 bg-amber-600"></div>
-            </div>
-          </div>
-          <div
-            class="group relative h-80 overflow-hidden cursor-pointer bg-black">
-            <img
-              src="https://images.unsplash.com/photo-1559506974-7a81214baaf7?q=80&w=800&auto=format&fit=crop"
-              alt="Chocolate Tart"
-              class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
-            <div
-              class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60">
-              <span
-                class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2"
-                >Pastry</span
-              >
-              <h3 class="text-white text-2xl font-serif italic mb-2">
-                Dark Chocolate Tart
-              </h3>
-              <p class="text-gray-300 text-sm font-light">
-                70% cacao ganache, sea salt caramel, and hazelnut praline.
-              </p>
-              <div class="mt-4 w-8 h-0.5 bg-amber-600"></div>
-            </div>
-          </div>
-          <div
-            class="group relative h-80 overflow-hidden cursor-pointer bg-black">
-            <img
-              src="https://images.unsplash.com/photo-1626805673863-3b256b3333b6?q=80&w=800&auto=format&fit=crop"
-              alt="Risotto"
-              class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
-            <div
-              class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60">
-              <span
-                class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2"
-                >Italian</span
-              >
-              <h3 class="text-white text-2xl font-serif italic mb-2">
-                Saffron Risotto
-              </h3>
-              <p class="text-gray-300 text-sm font-light">
-                Arborio rice, saffron threads, aged parmesan, and bone marrow.
-              </p>
-              <div class="mt-4 w-8 h-0.5 bg-amber-600"></div>
-            </div>
-          </div>
-          <div
-            class="group relative h-80 overflow-hidden cursor-pointer bg-black">
-            <img
-              src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
-              alt="Lamb"
-              class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
-            <div
-              class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60">
-              <span
-                class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2"
-                >Main Course</span
-              >
-              <h3 class="text-white text-2xl font-serif italic mb-2">
-                Herb Crusted Lamb
-              </h3>
-              <p class="text-gray-300 text-sm font-light">
-                Rack of lamb with a rosemary-dijon crust and fondant potatoes.
-              </p>
-              <div class="mt-4 w-8 h-0.5 bg-amber-600"></div>
-            </div>
-          </div>
-          <div
-            class="group relative h-80 overflow-hidden cursor-pointer bg-black">
-            <img
-              src="recentDishOfMeImages/LbsterParagon.jpg"
-              onerror="this.src='https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=800&auto=format&fit=crop'"
-              alt="Salmon"
-              class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
-            <div
-              class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60">
-              <span
-                class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2"
-                >Seafood</span
-              >
-              <h3 class="text-white text-2xl font-serif italic mb-2">
-                Lobster Paragon
-              </h3>
-              <p class="text-gray-300 text-sm font-light">
-                Butter-poached lobster tail, saffron reduction, and caviar
-                garnish.
-              </p>
-              <div class="mt-4 w-8 h-0.5 bg-amber-600"></div>
-            </div>
-          </div>
-          <div
-            class="group relative h-80 overflow-hidden cursor-pointer bg-black">
-            <img
-              src="https://images.unsplash.com/photo-1569246294372-ed319c674f14?q=80&w=800&auto=format&fit=crop"
-              alt="Mushroom"
-              class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
-            <div
-              class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60">
-              <span
-                class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2"
-                >Molecular</span
-              >
-              <h3 class="text-white text-2xl font-serif italic mb-2">
-                Wild Mushroom Foam
-              </h3>
-              <p class="text-gray-300 text-sm font-light">
-                A study in textures: mushroom foam, dehydrated powder, and
-                sauté.
-              </p>
-              <div class="mt-4 w-8 h-0.5 bg-amber-600"></div>
-            </div>
-          </div>
-        </div>
-        <div class="text-center mt-12">
-          <button
-            class="text-gray-400 hover:text-white text-sm font-sans tracking-widest uppercase border-b border-gray-700 hover:border-white pb-1 transition-all">
-            View All Projects
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section id="resume" class="py-24 bg-[#222]">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-sans font-bold text-white mb-4">
-            Career & Credentials
-          </h2>
-          <div class="h-0.5 w-12 bg-amber-600 mx-auto"></div>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <div class="flex items-center justify-between mb-8">
-              <h3 class="text-2xl font-serif italic text-white">
-                Professional Journey
-              </h3>
-              <a
-                href="path-to-your-cv.pdf"
-                download
-                class="flex items-center gap-2 text-amber-500 border border-amber-600 px-4 py-2 text-sm uppercase tracking-widest hover:bg-amber-600 hover:text-white transition-all">
-                <i data-lucide="file-down" class="w-4 h-4"></i> Download CV
-              </a>
-            </div>
-            <div class="border-l-2 border-amber-600/30 pl-6 pb-8 relative">
-              <div
-                class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-amber-600"></div>
-              <span
-                class="text-xs font-sans tracking-widest text-gray-500 uppercase"
-                >2026 - Present</span
-              >
-              <h4 class="text-xl text-white font-bold mt-1">Trainee Chef</h4>
-              <p class="text-amber-500 text-sm mb-2">
-                The Grand Hotel & Resort
-              </p>
-              <p class="text-gray-400 text-sm leading-relaxed">
-                Assisting the Head Chef in menu preparation, learning molecular
-                gastronomy techniques, and managing the cold station during peak
-                service hours.
-              </p>
-            </div>
-            <div class="border-l-2 border-amber-600/30 pl-6 pb-8 relative">
-              <div
-                class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#2C2C2C] border-2 border-amber-600"></div>
-              <span
-                class="text-xs font-sans tracking-widest text-gray-500 uppercase"
-                >September - December 2025</span
-              >
-              <h4 class="text-xl text-white font-bold mt-1">
-                Professional Chef Course Level-1
-              </h4>
-              <p class="text-amber-500 text-sm mb-2">
-                International Culinary Institute (ICI)
-              </p>
-              <p class="text-gray-400 text-sm leading-relaxed">
-                Trained with distinction. Specialized in continental cuisine and
-                food safety management (HACCP Level 1).
-              </p>
-            </div>
-            <div class="bg-[#1a1a1a] p-6 border border-gray-800 mt-4">
-              <h4
-                class="flex items-center gap-2 text-white font-bold uppercase text-sm mb-4">
-                <i data-lucide="award" class="text-amber-500 w-5 h-5"></i>
-                Certifications
-              </h4>
-              <ul class="space-y-3 text-gray-400 text-sm">
-                <li class="flex items-start gap-2">
-                  <span class="text-amber-500 mt-1">•</span> Food Safety &
-                  Hygiene Level 2
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-amber-500 mt-1">•</span> Basic First Aid &
-                  Fire Safety
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-amber-500 mt-1">•</span> Knife Skills
-                  Masterclass Workshop
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-2xl font-serif italic text-white mb-8">
-              References & Mentors
-            </h3>
-            <div
-              class="bg-[#1a1a1a] p-8 mb-6 relative group hover:-translate-y-2 transition-transform duration-300">
-              <i
-                data-lucide="quote"
-                class="absolute top-6 right-6 text-gray-700 w-8 h-8 opacity-50 group-hover:text-amber-600/20 transition-colors"></i>
-              <p class="text-gray-400 italic mb-6 leading-relaxed">
-                "Imam possesses a rare combination of creativity and discipline.
-                His ability to adapt quickly in a high-pressure kitchen
-                environment is impressive for his level of experience."
-              </p>
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-gray-700 rounded-full overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=200&auto=format&fit=crop"
-                    alt="Ref"
-                    class="w-full h-full object-cover grayscale" />
-                </div>
-                <div>
-                  <h5 class="text-white font-bold text-sm uppercase">
-                    Chef Gordon Ramsay
-                  </h5>
-                  <p class="text-amber-500 text-xs tracking-wider">
-                    Head Chef, Hell's Kitchen
-                  </p>
-                  <p class="text-gray-600 text-xs mt-1">+1 (555) 123-4567</p>
-                </div>
-              </div>
-            </div>
-            <div
-              class="bg-[#1a1a1a] p-8 relative group hover:-translate-y-2 transition-transform duration-300">
-              <i
-                data-lucide="quote"
-                class="absolute top-6 right-6 text-gray-700 w-8 h-8 opacity-50 group-hover:text-amber-600/20 transition-colors"></i>
-              <p class="text-gray-400 italic mb-6 leading-relaxed">
-                "I have seen Imam grow from a student to a capable culinarian.
-                His plating skills and understanding of flavor profiles are well
-                beyond his years."
-              </p>
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-gray-700 rounded-full overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=200&auto=format&fit=crop"
-                    alt="Ref"
-                    class="w-full h-full object-cover grayscale" />
-                </div>
-                <div>
-                  <h5 class="text-white font-bold text-sm uppercase">
-                    Chef Marco Pierre
-                  </h5>
-                  <p class="text-amber-500 text-xs tracking-wider">
-                    Executive Chef, The Dining Room
-                  </p>
-                  <p class="text-gray-600 text-xs mt-1">marco@example.com</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-20 bg-[#2C2C2C] relative">
-      <div class="container mx-auto px-6 text-center">
-        <blockquote
-          class="text-2xl md:text-3xl font-serif italic text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          "Cooking is an art, but all art requires knowing something about the
-          techniques and materials."
-        </blockquote>
-        <cite
-          class="block mt-6 text-amber-600 font-sans text-sm font-bold tracking-widest uppercase"
-          >— Nathan Myhrvold</cite
+            /* Smooth Scrolling */
+            html {
+                scroll-behavior: smooth;
+            }
+        </style>
+    </head>
+    <body class="bg-[#1a1a1a] text-gray-300">
+        <nav
+            id="navbar"
+            class="fixed w-full z-50 transition-all duration-300 bg-transparent py-6"
         >
-      </div>
-    </section>
+            <div
+                class="container mx-auto px-6 flex justify-between items-center"
+            >
+                <div
+                    class="text-amber-500 font-sans font-bold text-2xl tracking-widest border-2 border-amber-500 p-2"
+                >
+                    IH
+                </div>
 
-    <section id="contact" class="py-20 bg-[#151515] border-t border-gray-800">
-      <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-3xl font-sans font-bold text-white mb-8">
-            Get In Touch
-          </h2>
-          <p class="text-gray-400 mb-12">
-            I am currently available for apprenticeships, private dining events,
-            and collaborations.
-          </p>
-          <div class="flex flex-col md:flex-row justify-center gap-8 mb-16">
-            <a
-              href="mailto:mdimamhasanihr@gmail.com"
-              class="flex items-center justify-center space-x-3 text-gray-300 hover:text-amber-500 transition-colors p-4 border border-gray-800 hover:border-amber-600 w-full md:w-64">
-              <i data-lucide="mail" class="w-5 h-5"></i>
-              <span>mdimamhasanihr@gmail.com</span>
-            </a>
+                <div
+                    class="hidden md:flex space-x-8 font-sans text-sm tracking-widest uppercase"
+                >
+                    <a
+                        href="#hero"
+                        class="hover:text-amber-500 transition-colors"
+                        >Home</a
+                    >
+                    <a
+                        href="#about"
+                        class="hover:text-amber-500 transition-colors"
+                        >About</a
+                    >
+                    <a
+                        href="#portfolio"
+                        class="hover:text-amber-500 transition-colors"
+                        >Portfolio</a
+                    >
+                    <a
+                        href="#resume"
+                        class="hover:text-amber-500 transition-colors"
+                        >Resume</a
+                    >
+                    <a
+                        href="#contact"
+                        class="hover:text-amber-500 transition-colors"
+                        >Contact</a
+                    >
+                </div>
 
-            <a
-              href="https://facebook.com/imam.hasan.281291"
-              class="flex items-center justify-center space-x-3 text-gray-300 hover:text-amber-500 transition-colors p-4 border border-gray-800 hover:border-amber-600 w-full md:w-64">
-              <i data-lucide="facebook" class="w-5 h-5"></i>
-              <span>Facebook Profile</span>
-            </a>
+                <div class="md:hidden">
+                    <button id="menuBtn" class="text-white focus:outline-none">
+                        <i data-lucide="menu" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
 
-            <a
-              href="https://github.com/1imamhasan"
-              class="flex items-center justify-center space-x-3 text-gray-300 hover:text-amber-500 transition-colors p-4 border border-gray-800 hover:border-amber-600 w-full md:w-64">
-              <i data-lucide="github" class="w-5 h-5"></i>
-              <span>GitHub Profile</span>
-            </a>
-          </div>
-          <div class="flex justify-center space-x-6 mb-8">
-            <div class="w-2 h-2 bg-amber-600 rounded-full"></div>
-            <div class="w-2 h-2 bg-amber-600 rounded-full"></div>
-            <div class="w-2 h-2 bg-amber-600 rounded-full"></div>
-          </div>
-          <p class="text-gray-600 text-sm font-sans tracking-wider">
-            © <span id="year"></span> Imam Hasan. All Rights Reserved.
-          </p>
-        </div>
-      </div>
-    </section>
-    <button
-  id="backToTopBtn"
-  class="fixed bottom-6 right-6 p-3 bg-amber-600 text-white rounded-full shadow-lg opacity-0 transition-opacity duration-300 z-50 hover:bg-amber-700"
-  aria-label="Back to top">
-  <i data-lucide="arrow-up" class="w-6 h-6"></i>
-</button>
+            <div
+                id="mobileMenu"
+                class="hidden md:hidden bg-[#2C2C2C] absolute w-full top-full left-0 py-4 shadow-xl"
+            >
+                <div
+                    class="flex flex-col items-center space-y-4 font-sans uppercase tracking-wider text-sm"
+                >
+                    <a href="#hero" class="mobile-link hover:text-amber-500"
+                        >Home</a
+                    >
+                    <a href="#about" class="mobile-link hover:text-amber-500"
+                        >About</a
+                    >
+                    <a
+                        href="#portfolio"
+                        class="mobile-link hover:text-amber-500"
+                        >Portfolio</a
+                    >
+                    <a href="#resume" class="mobile-link hover:text-amber-500"
+                        >Resume</a
+                    >
+                    <a href="#contact" class="mobile-link hover:text-amber-500"
+                        >Contact</a
+                    >
+                </div>
+            </div>
+        </nav>
 
+        <section
+            id="hero"
+            class="relative h-screen flex items-center justify-center overflow-hidden"
+        >
+            <div class="absolute inset-0 z-0">
+                <img
+                    src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop"
+                    alt="Fine Dining Background"
+                    class="w-full h-full object-cover opacity-40"
+                />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/60 to-transparent"
+                ></div>
+            </div>
+            <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+                <p
+                    class="text-amber-500 font-sans tracking-[0.3em] uppercase text-sm mb-4"
+                >
+                    Trainee Chef Portfolio
+                </p>
+                <h1
+                    class="text-5xl md:text-7xl font-sans font-bold text-white mb-6 tracking-tight"
+                >
+                    IMAM HASAN
+                </h1>
+                <div class="h-1 w-24 bg-amber-600 mx-auto mb-8"></div>
+                <p
+                    class="text-xl md:text-2xl text-gray-300 font-light italic mb-10"
+                >
+                    "Where Technique Meets Taste."
+                </p>
+                <a
+                    href="#portfolio"
+                    class="px-8 py-3 border border-amber-600 text-amber-500 font-sans uppercase tracking-widest hover:bg-amber-600 hover:text-white transition-all duration-300 inline-block"
+                >
+                    Explore Portfolio
+                </a>
+            </div>
+            <div
+                class="absolute bottom-10 w-full flex justify-center animate-bounce"
+            >
+                <i data-lucide="chevron-down" class="text-gray-500 w-8 h-8"></i>
+            </div>
+        </section>
 
-    <script>
-      // 1. Initialize Icons
-      lucide.createIcons();
+        <section id="about" class="py-20 bg-[#1f1f1f]">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="w-full md:w-1/2 relative group">
+                        <div
+                            class="absolute inset-0 border-2 border-amber-600 transform translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300 hidden md:block"
+                        ></div>
+                        <img
+                            src="photosImam/resume.jpg"
+                            onerror="this.src='https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=800&auto=format&fit=crop'"
+                            alt="Imam Hasan Chef"
+                            class="w-full h-[500px] object-cover relative z-10 shadow-2xl filter grayscale hover:grayscale-0 transition-all duration-500"
+                        />
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h2
+                            class="text-3xl md:text-4xl font-sans font-bold text-white mb-6"
+                        >
+                            The Chef's Table
+                        </h2>
+                        <p class="text-gray-400 leading-relaxed mb-6 text-lg">
+                            Hello, I'm
+                            <span class="text-amber-500 font-bold"
+                                >Imam Hasan</span
+                            >. As a dedicated Trainee Chef, I focus on the
+                            intersection of classic tradition and modern
+                            innovation. My journey is defined by a relentless
+                            pursuit of flavor balance and the art of plating.
+                        </p>
+                        <p class="text-gray-400 leading-relaxed mb-8">
+                            Currently honing my techniques in modern fusion, my
+                            goal is to create dining experiences that honor
+                            ingredients through meticulous preparation and
+                            respect for the craft.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div
+                                class="flex items-center space-x-4 bg-[#2C2C2C] p-4 rounded border-l-2 border-transparent hover:border-amber-600 transition-all"
+                            >
+                                <div class="text-amber-500">
+                                    <i data-lucide="utensils-crossed"></i>
+                                </div>
+                                <div>
+                                    <h4
+                                        class="text-white font-sans font-bold uppercase text-sm"
+                                    >
+                                        Knife Skills
+                                    </h4>
+                                    <p class="text-gray-500 text-xs">
+                                        Precision cuts & butchery
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center space-x-4 bg-[#2C2C2C] p-4 rounded border-l-2 border-transparent hover:border-amber-600 transition-all"
+                            >
+                                <div class="text-amber-500">
+                                    <i data-lucide="flame"></i>
+                                </div>
+                                <div>
+                                    <h4
+                                        class="text-white font-sans font-bold uppercase text-sm"
+                                    >
+                                        Sauté & Grill
+                                    </h4>
+                                    <p class="text-gray-500 text-xs">
+                                        Temperature control mastery
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center space-x-4 bg-[#2C2C2C] p-4 rounded border-l-2 border-transparent hover:border-amber-600 transition-all"
+                            >
+                                <div class="text-amber-500">
+                                    <i data-lucide="award"></i>
+                                </div>
+                                <div>
+                                    <h4
+                                        class="text-white font-sans font-bold uppercase text-sm"
+                                    >
+                                        Plating
+                                    </h4>
+                                    <p class="text-gray-500 text-xs">
+                                        Visual composition & aesthetics
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center space-x-4 bg-[#2C2C2C] p-4 rounded border-l-2 border-transparent hover:border-amber-600 transition-all"
+                            >
+                                <div class="text-amber-500">
+                                    <i data-lucide="chef-hat"></i>
+                                </div>
+                                <div>
+                                    <h4
+                                        class="text-white font-sans font-bold uppercase text-sm"
+                                    >
+                                        Menu Planning
+                                    </h4>
+                                    <p class="text-gray-500 text-xs">
+                                        Costing & seasonal pairing
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      // 2. Set Current Year
-      document.getElementById('year').textContent = new Date().getFullYear();
+        <section id="portfolio" class="py-24 bg-[#1a1a1a]">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl md:text-4xl font-sans font-bold text-white mb-4"
+                    >
+                        Culinary Creations
+                    </h2>
+                    <div class="h-0.5 w-12 bg-amber-600 mx-auto"></div>
+                    <p class="mt-4 text-gray-400 italic">
+                        A selection of my recent work and experiments.
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    id="portfolio-grid"
+                >
+                    <div
+                        class="group relative h-80 overflow-hidden cursor-pointer bg-black"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1676300185292-e238e43b3d5d?q=80&w=800&auto=format&fit=crop"
+                            alt="Duck Breast"
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out"
+                        />
+                        <div
+                            class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60"
+                        >
+                            <span
+                                class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2"
+                                >Modern French</span
+                            >
+                            <h3
+                                class="text-white text-2xl font-serif italic mb-2"
+                            >
+                                Pan-Seared Duck Breast
+                            </h3>
+                            <p class="text-gray-300 text-sm font-light">
+                                Crispy skin duck breast with a cherry reduction
+                                and parsnip purée.
+                            </p>
+                            <div class="mt-4 w-8 h-0.5 bg-amber-600"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative h-80 overflow-hidden cursor-pointer bg-black"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1559506974-7a81214baaf7?q=80&w=800&auto=format&fit=crop"
+                            alt="Chocolate Tart"
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out"
+                        />
+                        <div
+                            class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60"
+                        >
+                            <span
+                                class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2"
+                                >Pastry</span
+                            >
+                            <h3
+                                class="text-white text-2xl font-serif italic mb-2"
+                            >
+                                Dark Chocolate Tart
+                            </h3>
+                            <p class="text-gray-300 text-sm font-light">
+                                70% cacao ganache, sea salt caramel, and
+                                hazelnut praline.
+                            </p>
+                            <div class="mt-4 w-8 h-0.5 bg-amber-600"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative h-80 overflow-hidden cursor-pointer bg-black"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1626805673863-3b256b3333b6?q=80&w=800&auto=format&fit=crop"
+                            alt="Risotto"
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out"
+                        />
+                        <div
+                            class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60"
+                        >
+                            <span
+                                class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2"
+                                >Italian</span
+                            >
+                            <h3
+                                class="text-white text-2xl font-serif italic mb-2"
+                            >
+                                Saffron Risotto
+                            </h3>
+                            <p class="text-gray-300 text-sm font-light">
+                                Arborio rice, saffron threads, aged parmesan,
+                                and bone marrow.
+                            </p>
+                            <div class="mt-4 w-8 h-0.5 bg-amber-600"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative h-80 overflow-hidden cursor-pointer bg-black"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
+                            alt="Lamb"
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out"
+                        />
+                        <div
+                            class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60"
+                        >
+                            <span
+                                class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2"
+                                >Main Course</span
+                            >
+                            <h3
+                                class="text-white text-2xl font-serif italic mb-2"
+                            >
+                                Herb Crusted Lamb
+                            </h3>
+                            <p class="text-gray-300 text-sm font-light">
+                                Rack of lamb with a rosemary-dijon crust and
+                                fondant potatoes.
+                            </p>
+                            <div class="mt-4 w-8 h-0.5 bg-amber-600"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative h-80 overflow-hidden cursor-pointer bg-black"
+                    >
+                        <img
+                            src="recentDishOfMeImages/LbsterParagon.jpg"
+                            onerror="this.src='https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=800&auto=format&fit=crop'"
+                            alt="Salmon"
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out"
+                        />
+                        <div
+                            class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60"
+                        >
+                            <span
+                                class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2"
+                                >Seafood</span
+                            >
+                            <h3
+                                class="text-white text-2xl font-serif italic mb-2"
+                            >
+                                Lobster Paragon
+                            </h3>
+                            <p class="text-gray-300 text-sm font-light">
+                                Butter-poached lobster tail, saffron reduction,
+                                and caviar garnish.
+                            </p>
+                            <div class="mt-4 w-8 h-0.5 bg-amber-600"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative h-80 overflow-hidden cursor-pointer bg-black"
+                    >
+                        <img
+                            src="https://images.unsplash.com/photo-1569246294372-ed319c674f14?q=80&w=800&auto=format&fit=crop"
+                            alt="Mushroom"
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out"
+                        />
+                        <div
+                            class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60"
+                        >
+                            <span
+                                class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2"
+                                >Molecular</span
+                            >
+                            <h3
+                                class="text-white text-2xl font-serif italic mb-2"
+                            >
+                                Wild Mushroom Foam
+                            </h3>
+                            <p class="text-gray-300 text-sm font-light">
+                                A study in textures: mushroom foam, dehydrated
+                                powder, and sauté.
+                            </p>
+                            <div class="mt-4 w-8 h-0.5 bg-amber-600"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <button
+                        class="text-gray-400 hover:text-white text-sm font-sans tracking-widest uppercase border-b border-gray-700 hover:border-white pb-1 transition-all"
+                    >
+                        View All Projects
+                    </button>
+                </div>
+            </div>
+        </section>
 
-      // 3. Navbar Scroll Effect
-      const navbar = document.getElementById('navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          navbar.classList.remove('bg-transparent', 'py-6');
-          navbar.classList.add(
-            'bg-[#1a1a1a]/95',
-            'backdrop-blur-sm',
-            'shadow-lg',
-            'py-4',
-          );
-        } else {
-          navbar.classList.add('bg-transparent', 'py-6');
-          navbar.classList.remove(
-            'bg-[#1a1a1a]/95',
-            'backdrop-blur-sm',
-            'shadow-lg',
-            'py-4',
-          );
-        }
-      });
+        <section id="resume" class="py-24 bg-[#222]">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-3xl md:text-4xl font-sans font-bold text-white mb-4"
+                    >
+                        Career & Credentials
+                    </h2>
+                    <div class="h-0.5 w-12 bg-amber-600 mx-auto"></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <div class="flex items-center justify-between mb-8">
+                            <h3 class="text-2xl font-serif italic text-white">
+                                Professional Journey
+                            </h3>
+                            <a
+                                href="path-to-your-cv.pdf"
+                                download
+                                class="flex items-center gap-2 text-amber-500 border border-amber-600 px-4 py-2 text-sm uppercase tracking-widest hover:bg-amber-600 hover:text-white transition-all"
+                            >
+                                <i data-lucide="file-down" class="w-4 h-4"></i>
+                                Download CV
+                            </a>
+                        </div>
+                        <div
+                            class="border-l-2 border-amber-600/30 pl-6 pb-8 relative"
+                        >
+                            <div
+                                class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-amber-600"
+                            ></div>
+                            <span
+                                class="text-xs font-sans tracking-widest text-gray-500 uppercase"
+                                >2026 - Present</span
+                            >
+                            <h4 class="text-xl text-white font-bold mt-1">
+                                Trainee Chef
+                            </h4>
+                            <p class="text-amber-500 text-sm mb-2">
+                                The Grand Hotel & Resort
+                            </p>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Assisting the Head Chef in menu preparation,
+                                learning molecular gastronomy techniques, and
+                                managing the cold station during peak service
+                                hours.
+                            </p>
+                        </div>
+                        <div
+                            class="border-l-2 border-amber-600/30 pl-6 pb-8 relative"
+                        >
+                            <div
+                                class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#2C2C2C] border-2 border-amber-600"
+                            ></div>
+                            <span
+                                class="text-xs font-sans tracking-widest text-gray-500 uppercase"
+                                >September - December 2025</span
+                            >
+                            <h4 class="text-xl text-white font-bold mt-1">
+                                Professional Chef Course Level-1
+                            </h4>
+                            <p class="text-amber-500 text-sm mb-2">
+                                International Culinary Institute (ICI)
+                            </p>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Trained with distinction. Specialized in
+                                continental cuisine and food safety management
+                                (HACCP Level 1).
+                            </p>
+                        </div>
+                        <div
+                            class="bg-[#1a1a1a] p-6 border border-gray-800 mt-4"
+                        >
+                            <h4
+                                class="flex items-center gap-2 text-white font-bold uppercase text-sm mb-4"
+                            >
+                                <i
+                                    data-lucide="award"
+                                    class="text-amber-500 w-5 h-5"
+                                ></i>
+                                Certifications
+                            </h4>
+                            <ul class="space-y-3 text-gray-400 text-sm">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-amber-500 mt-1">•</span>
+                                    Food Safety & Hygiene Level 2
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-amber-500 mt-1">•</span>
+                                    Basic First Aid & Fire Safety
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-amber-500 mt-1">•</span>
+                                    Knife Skills Masterclass Workshop
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-serif italic text-white mb-8">
+                            References & Mentors
+                        </h3>
 
-      // 4. Mobile Menu Toggle
-      const menuBtn = document.getElementById('menuBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
-      const menuIcon = document.getElementById('menuIcon');
-      const mobileLinks = document.querySelectorAll('.mobile-link');
-      let isMenuOpen = false;
+                        <div class="relative">
+                            <div class="carousel-container">
+                                <div
+                                    class="carousel-track"
+                                    id="testimonialTrack"
+                                >
+                                    <div class="testimonial-slide px-1">
+                                        <div
+                                            class="bg-[#1a1a1a] p-8 mb-6 relative group"
+                                        >
+                                            <i
+                                                data-lucide="quote"
+                                                class="absolute top-6 right-6 text-gray-700 w-8 h-8 opacity-50 group-hover:text-amber-600/20 transition-colors"
+                                            ></i>
+                                            <p
+                                                class="text-gray-400 italic mb-6 leading-relaxed"
+                                            >
+                                                "Imam possesses a rare
+                                                combination of creativity and
+                                                discipline. His ability to adapt
+                                                quickly in a high-pressure
+                                                kitchen environment is
+                                                impressive for his level of
+                                                experience."
+                                            </p>
+                                            <div
+                                                class="flex items-center gap-4"
+                                            >
+                                                <div
+                                                    class="w-12 h-12 bg-gray-700 rounded-full overflow-hidden"
+                                                >
+                                                    <img
+                                                        src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=200&auto=format&fit=crop"
+                                                        alt="Ref"
+                                                        class="w-full h-full object-cover grayscale"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-white font-bold text-sm uppercase"
+                                                    >
+                                                        Chef Gordon Ramsay
+                                                    </h5>
+                                                    <p
+                                                        class="text-amber-500 text-xs tracking-wider"
+                                                    >
+                                                        Head Chef, Hell's
+                                                        Kitchen
+                                                    </p>
+                                                    <p
+                                                        class="text-gray-600 text-xs mt-1"
+                                                    >
+                                                        +1 (555) 123-4567
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-      menuBtn.addEventListener('click', () => {
-        isMenuOpen = !isMenuOpen;
-        if (isMenuOpen) {
-          mobileMenu.classList.remove('hidden');
-          menuIcon.setAttribute('data-lucide', 'x');
-        } else {
-          mobileMenu.classList.add('hidden');
-          menuIcon.setAttribute('data-lucide', 'menu');
-        }
-        lucide.createIcons();
-      });
+                                    <div class="testimonial-slide px-1">
+                                        <div
+                                            class="bg-[#1a1a1a] p-8 relative group"
+                                        >
+                                            <i
+                                                data-lucide="quote"
+                                                class="absolute top-6 right-6 text-gray-700 w-8 h-8 opacity-50 group-hover:text-amber-600/20 transition-colors"
+                                            ></i>
+                                            <p
+                                                class="text-gray-400 italic mb-6 leading-relaxed"
+                                            >
+                                                "I have seen Imam grow from a
+                                                student to a capable culinarian.
+                                                His plating skills and
+                                                understanding of flavor profiles
+                                                are well beyond his years."
+                                            </p>
+                                            <div
+                                                class="flex items-center gap-4"
+                                            >
+                                                <div
+                                                    class="w-12 h-12 bg-gray-700 rounded-full overflow-hidden"
+                                                >
+                                                    <img
+                                                        src="https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=200&auto=format&fit=crop"
+                                                        alt="Ref"
+                                                        class="w-full h-full object-cover grayscale"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <h5
+                                                        class="text-white font-bold text-sm uppercase"
+                                                    >
+                                                        Chef Marco Pierre
+                                                    </h5>
+                                                    <p
+                                                        class="text-amber-500 text-xs tracking-wider"
+                                                    >
+                                                        Executive Chef, The
+                                                        Dining Room
+                                                    </p>
+                                                    <p
+                                                        class="text-gray-600 text-xs mt-1"
+                                                    >
+                                                        marco@example.com
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-      // Close menu when link is clicked
-      mobileLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-          isMenuOpen = false;
-          mobileMenu.classList.add('hidden');
-          menuIcon.setAttribute('data-lucide', 'menu');
-          lucide.createIcons();
-        });
-      });
-          // ... আপনার বিদ্যমান JS কোড (Navbar, Mobile Menu, etc.) ...
+                            <button
+                                id="prevTestimonial"
+                                class="absolute top-1/2 left-1 transform -translate-y-1/2 p-2 rounded-full bg-black/60 text-white hover:bg-amber-600 transition-colors z-10"
+                                aria-label="Previous testimonial"
+                            >
+                                <i
+                                    data-lucide="chevron-left"
+                                    class="w-5 h-5"
+                                ></i>
+                            </button>
 
-      // 6. Back to Top Button Logic
-      const backToTopBtn = document.getElementById('backToTopBtn');
+                            <button
+                                id="nextTestimonial"
+                                class="absolute top-1/2 right-1 transform -translate-y-1/2 p-2 rounded-full bg-black/60 text-white hover:bg-amber-600 transition-colors z-10"
+                                aria-label="Next testimonial"
+                            >
+                                <i
+                                    data-lucide="chevron-right"
+                                    class="w-5 h-5"
+                                ></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      // Show or hide the button based on scroll position
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backToTopBtn.classList.remove('opacity-0');
-          backToTopBtn.classList.add('opacity-100');
-        } else {
-          backToTopBtn.classList.remove('opacity-100');
-          backToTopBtn.classList.add('opacity-0');
-        }
-      });
+        <section class="py-20 bg-[#2C2C2C] relative">
+            <div class="container mx-auto px-6 text-center">
+                <blockquote
+                    class="text-2xl md:text-3xl font-serif italic text-gray-300 max-w-3xl mx-auto leading-relaxed"
+                >
+                    "Cooking is an art, but all art requires knowing something
+                    about the techniques and materials."
+                </blockquote>
+                <cite
+                    class="block mt-6 text-amber-600 font-sans text-sm font-bold tracking-widest uppercase"
+                    >— Nathan Myhrvold</cite
+                >
+            </div>
+        </section>
 
-      // Smooth scroll to top when button is clicked
-      backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        });
-      });
+        <section
+            id="contact"
+            class="py-20 bg-[#151515] border-t border-gray-800"
+        >
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-sans font-bold text-white mb-8">
+                        Get In Touch
+                    </h2>
+                    <p class="text-gray-400 mb-12">
+                        I am currently available for apprenticeships, private
+                        dining events, and collaborations.
+                    </p>
+                    <div
+                        class="flex flex-col md:flex-row justify-center gap-8 mb-16"
+                    >
+                        <a
+                            href="mailto:mdimamhasanihr@gmail.com"
+                            class="flex items-center justify-center space-x-3 text-gray-300 hover:text-amber-500 transition-colors p-4 border border-gray-800 hover:border-amber-600 w-full md:w-64"
+                        >
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                            <span>mdimamhasanihr@gmail.com</span>
+                        </a>
 
-      // 1. Initialize Icons (Ensure this is at the end to catch the new icon)
-      lucide.createIcons();
-    </script>
-  </body>
+                        <a
+                            href="https://facebook.com/imam.hasan.281291"
+                            class="flex items-center justify-center space-x-3 text-gray-300 hover:text-amber-500 transition-colors p-4 border border-gray-800 hover:border-amber-600 w-full md:w-64"
+                        >
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                            <span>Facebook Profile</span>
+                        </a>
+
+                        <a
+                            href="https://github.com/1imamhasan"
+                            class="flex items-center justify-center space-x-3 text-gray-300 hover:text-amber-500 transition-colors p-4 border border-gray-800 hover:border-amber-600 w-full md:w-64"
+                        >
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                            <span>GitHub Profile</span>
+                        </a>
+                    </div>
+                    <div class="flex justify-center space-x-6 mb-8">
+                        <div class="w-2 h-2 bg-amber-600 rounded-full"></div>
+                        <div class="w-2 h-2 bg-amber-600 rounded-full"></div>
+                        <div class="w-2 h-2 bg-amber-600 rounded-full"></div>
+                    </div>
+                    <p class="text-gray-600 text-sm font-sans tracking-wider">
+                        © <span id="year"></span> Imam Hasan. All Rights
+                        Reserved.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <button
+            id="backToTopBtn"
+            class="fixed bottom-6 right-6 p-3 bg-amber-600 text-white rounded-full shadow-lg opacity-0 transition-opacity duration-300 z-50 hover:bg-amber-700"
+            aria-label="Back to top"
+        >
+            <i data-lucide="arrow-up" class="w-6 h-6"></i>
+        </button>
+
+        <script>
+            // ----------------------------------------------------
+            // 1. INITIAL SETUP & UTILITIES
+            // ----------------------------------------------------
+
+            // 1. Initialize Icons (Will be called again at the end)
+            lucide.createIcons();
+
+            // 2. Set Current Year
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+
+            // ----------------------------------------------------
+            // 2. NAVBAR & MOBILE MENU LOGIC
+            // ----------------------------------------------------
+
+            const navbar = document.getElementById("navbar");
+            const menuBtn = document.getElementById("menuBtn");
+            const mobileMenu = document.getElementById("mobileMenu");
+            const menuIcon = document.getElementById("menuIcon");
+            const mobileLinks = document.querySelectorAll(".mobile-link");
+            let isMenuOpen = false;
+
+            // 3. Navbar Scroll Effect
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove("bg-transparent", "py-6");
+                    navbar.classList.add(
+                        "bg-[#1a1a1a]/95",
+                        "backdrop-blur-sm",
+                        "shadow-lg",
+                        "py-4"
+                    );
+                } else {
+                    navbar.classList.add("bg-transparent", "py-6");
+                    navbar.classList.remove(
+                        "bg-[#1a1a1a]/95",
+                        "backdrop-blur-sm",
+                        "shadow-lg",
+                        "py-4"
+                    );
+                }
+            });
+
+            // 4. Mobile Menu Toggle Function
+            const toggleMobileMenu = () => {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenu.classList.remove("hidden");
+                    menuIcon.setAttribute("data-lucide", "x");
+                } else {
+                    mobileMenu.classList.add("hidden");
+                    menuIcon.setAttribute("data-lucide", "menu");
+                }
+                lucide.createIcons();
+            };
+
+            menuBtn.addEventListener("click", toggleMobileMenu);
+
+            // Close menu when link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener("click", toggleMobileMenu);
+            });
+
+            // ----------------------------------------------------
+            // 3. BACK TO TOP LOGIC
+            // ----------------------------------------------------
+
+            const backToTopBtn = document.getElementById("backToTopBtn");
+
+            // 6. Back to Top Button Logic
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.remove("opacity-0");
+                    backToTopBtn.classList.add("opacity-100");
+                } else {
+                    backToTopBtn.classList.remove("opacity-100");
+                    backToTopBtn.classList.add("opacity-0");
+                }
+            });
+
+            // Smooth scroll to top when button is clicked
+            backToTopBtn.addEventListener("click", () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+
+            // ----------------------------------------------------
+            // 4. TESTIMONIAL CAROUSEL LOGIC (নতুন যুক্ত করা হয়েছে)
+            // ----------------------------------------------------
+
+            const track = document.getElementById("testimonialTrack");
+            const slides = document.querySelectorAll(".testimonial-slide");
+            const prevBtn = document.getElementById("prevTestimonial");
+            const nextBtn = document.getElementById("nextTestimonial");
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+
+            if (track && totalSlides > 0) {
+                // Check if carousel elements exist
+                function updateCarousel() {
+                    const offset = -currentIndex * 100;
+                    track.style.transform = `translateX(${offset}%)`;
+                }
+
+                nextBtn.addEventListener("click", () => {
+                    if (currentIndex < totalSlides - 1) {
+                        currentIndex++;
+                    } else {
+                        currentIndex = 0; // Loop back to the start
+                    }
+                    updateCarousel();
+                });
+
+                prevBtn.addEventListener("click", () => {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                    } else {
+                        currentIndex = totalSlides - 1; // Loop to the end
+                    }
+                    updateCarousel();
+                });
+
+                // Optional: Auto-slide functionality (uncomment to activate)
+                /*
+        setInterval(() => {
+            if (currentIndex < totalSlides - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0; 
+            }
+            updateCarousel();
+        }, 5000); // Change slide every 5 seconds
+        */
+
+                updateCarousel(); // Initialize position
+            }
+
+            // Ensure all icons, including any newly added by JS, are rendered.
+            lucide.createIcons();
+        </script>
+    </body>
 </html>
