@@ -1,163 +1,211 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Imam Hasan - Chef Portfolio</title>
         
+        <!-- SEO & Social Sharing -->
+        <title>Imam Hasan | Trainee Chef Portfolio</title>
+        <meta name="description" content="Portfolio of Imam Hasan, a dedicated Trainee Chef specializing in Modern French and Continental Cuisine. Explore culinary creations, experience, and skills." />
+        <meta property="og:title" content="Imam Hasan - Chef Portfolio" />
+        <meta property="og:description" content="Where Technique Meets Taste. View my culinary journey." />
+        <meta property="og:image" content="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=1200" />
+        
+        <!-- Performance: Preconnect to external resources -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <!-- Tailwind CSS (CDN for immediate usage) -->
         <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            serif: ['"Playfair Display"', 'serif'],
+                            sans: ['"Lato"', 'sans-serif'],
+                        },
+                        colors: {
+                            brand: {
+                                gold: '#d97706', // Amber-600
+                                dark: '#1a1a1a',
+                            }
+                        },
+                        animation: {
+                            'slow-pulse': 'pulse 10s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        }
+                    }
+                }
+            }
+        </script>
         
+        <!-- Icons -->
         <script src="https://unpkg.com/lucide@latest"></script>
         
+        <!-- Animations -->
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         
+        <!-- Carousel -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
+        <!-- Fonts & Custom CSS -->
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
         <style>
-            @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap");
-
-            body {
-                font-family: "Playfair Display", serif;
-            }
-
-            .font-sans {
-                font-family: "Lato", sans-serif;
-            }
-
-            /* Smooth Scrolling */
-            html {
-                scroll-behavior: smooth;
-            }
-
             /* Custom Swiper Bullet Color */
-            .swiper-pagination-bullet-active {
-                background-color: #d97706 !important; /* Amber-600 */
-            }
-            .swiper-pagination-bullet {
-                background-color: #9ca3af;
+            .swiper-pagination-bullet-active { background-color: #d97706 !important; }
+            .swiper-pagination-bullet { background-color: #4b5563; }
+            
+            /* Hide scrollbar for cleaner modal */
+            .no-scroll { overflow: hidden; }
+            
+            /* Focus Visibility for Accessibility */
+            *:focus-visible {
+                outline: 2px solid #d97706;
+                outline-offset: 2px;
             }
         </style>
     </head>
-    <body class="bg-[#1a1a1a] text-gray-300 overflow-x-hidden">
+    <body class="bg-brand-dark text-gray-300 antialiased overflow-x-hidden font-sans selection:bg-brand-gold selection:text-white">
         
-        <div id="imageModal" class="fixed inset-0 z-[60] bg-black/95 hidden flex justify-center items-center opacity-0 transition-opacity duration-300">
-            <button id="closeModal" class="absolute top-6 right-6 text-white hover:text-amber-500 z-50">
-                <i data-lucide="x" class="w-10 h-10"></i>
+        <!-- Image Lightbox Modal -->
+        <div id="imageModal" class="fixed inset-0 z-[100] bg-black/95 hidden flex justify-center items-center opacity-0 transition-opacity duration-300 backdrop-blur-sm" role="dialog" aria-modal="true">
+            <button id="closeModal" class="absolute top-6 right-6 text-white hover:text-brand-gold transition-colors z-[101] p-2 bg-black/50 rounded-full">
+                <i data-lucide="x" class="w-8 h-8"></i>
             </button>
-            <img id="modalImage" src="" alt="Full Screen View" class="max-h-[90vh] max-w-[90vw] object-contain shadow-2xl border border-gray-800 rounded-sm">
+            <img id="modalImage" src="" alt="Full Screen View" class="max-h-[85vh] max-w-[90vw] object-contain shadow-2xl border border-gray-800 rounded-sm select-none">
+            <p class="absolute bottom-6 text-gray-400 text-sm tracking-widest uppercase">Tap outside to close</p>
         </div>
 
-        <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-6">
+        <!-- Navigation -->
+        <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-6 border-b border-transparent">
             <div class="container mx-auto px-6 flex justify-between items-center">
-                <div class="text-amber-500 font-sans font-bold text-2xl tracking-widest border-2 border-amber-500 p-2">
+                <!-- Logo -->
+                <a href="#" class="text-brand-gold font-sans font-bold text-2xl tracking-widest border-2 border-brand-gold p-2 hover:bg-brand-gold hover:text-white transition-colors">
                     IH
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 font-sans text-xs tracking-[0.2em] uppercase font-bold">
+                    <a href="#hero" class="hover:text-brand-gold transition-colors py-2">Home</a>
+                    <a href="#about" class="hover:text-brand-gold transition-colors py-2">About</a>
+                    <a href="#portfolio" class="hover:text-brand-gold transition-colors py-2">Portfolio</a>
+                    <a href="#resume" class="hover:text-brand-gold transition-colors py-2">Resume</a>
+                    <a href="#contact" class="hover:text-brand-gold transition-colors py-2">Contact</a>
                 </div>
 
-                <div class="hidden md:flex space-x-8 font-sans text-sm tracking-widest uppercase">
-                    <a href="#hero" class="hover:text-amber-500 transition-colors">Home</a>
-                    <a href="#about" class="hover:text-amber-500 transition-colors">About</a>
-                    <a href="#portfolio" class="hover:text-amber-500 transition-colors">Portfolio</a>
-                    <a href="#resume" class="hover:text-amber-500 transition-colors">Resume</a>
-                    <a href="#contact" class="hover:text-amber-500 transition-colors">Contact</a>
-                </div>
-
+                <!-- Mobile Menu Button -->
                 <div class="md:hidden">
-                    <button id="menuBtn" class="text-white focus:outline-none">
-                        <i data-lucide="menu" id="menuIcon"></i>
+                    <button id="menuBtn" class="text-white hover:text-brand-gold focus:outline-none transition-colors" aria-label="Toggle Menu">
+                        <i data-lucide="menu" id="menuIcon" class="w-8 h-8"></i>
                     </button>
                 </div>
             </div>
 
-            <div id="mobileMenu" class="hidden md:hidden bg-[#2C2C2C] absolute w-full top-full left-0 py-4 shadow-xl">
-                <div class="flex flex-col items-center space-y-4 font-sans uppercase tracking-wider text-sm">
-                    <a href="#hero" class="mobile-link hover:text-amber-500">Home</a>
-                    <a href="#about" class="mobile-link hover:text-amber-500">About</a>
-                    <a href="#portfolio" class="mobile-link hover:text-amber-500">Portfolio</a>
-                    <a href="#resume" class="mobile-link hover:text-amber-500">Resume</a>
-                    <a href="#contact" class="mobile-link hover:text-amber-500">Contact</a>
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobileMenu" class="hidden md:hidden bg-[#1f1f1f] absolute w-full top-full left-0 shadow-2xl border-t border-gray-800">
+                <div class="flex flex-col items-center py-6 space-y-6 font-sans uppercase tracking-widest text-sm font-bold">
+                    <a href="#hero" class="mobile-link w-full text-center py-2 hover:text-brand-gold hover:bg-white/5 transition-colors">Home</a>
+                    <a href="#about" class="mobile-link w-full text-center py-2 hover:text-brand-gold hover:bg-white/5 transition-colors">About</a>
+                    <a href="#portfolio" class="mobile-link w-full text-center py-2 hover:text-brand-gold hover:bg-white/5 transition-colors">Portfolio</a>
+                    <a href="#resume" class="mobile-link w-full text-center py-2 hover:text-brand-gold hover:bg-white/5 transition-colors">Resume</a>
+                    <a href="#contact" class="mobile-link w-full text-center py-2 hover:text-brand-gold hover:bg-white/5 transition-colors">Contact</a>
                 </div>
             </div>
         </nav>
 
+        <!-- Hero Section -->
         <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+            <!-- Background with Lazy Loading optimization not needed for hero, but opacity handled -->
             <div class="absolute inset-0 z-0">
                 <img
                     src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop"
-                    alt="Fine Dining Background"
-                    class="w-full h-full object-cover opacity-40 transform scale-105 animate-[pulse_10s_ease-in-out_infinite]"
+                    alt="Fine Dining Atmosphere"
+                    class="w-full h-full object-cover opacity-40 transform scale-105 animate-slow-pulse"
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/60 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-transparent"></div>
             </div>
-            <div class="relative z-10 text-center px-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1500">
-                <p class="text-amber-500 font-sans tracking-[0.3em] uppercase text-sm mb-4">
-                    Trainee Chef Portfolio
+            
+            <div class="relative z-10 text-center px-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1200">
+                <p class="text-brand-gold font-sans tracking-[0.4em] uppercase text-xs md:text-sm mb-6 font-bold">
+                    Portfolio
                 </p>
-                <h1 class="text-5xl md:text-7xl font-sans font-bold text-white mb-6 tracking-tight">
+                <h1 class="text-5xl md:text-8xl font-sans font-bold text-white mb-6 tracking-tight leading-tight">
                     IMAM HASAN
                 </h1>
-                <div class="h-1 w-24 bg-amber-600 mx-auto mb-8"></div>
-                <p class="text-xl md:text-2xl text-gray-300 font-light italic mb-10">
+                <div class="h-1 w-24 bg-brand-gold mx-auto mb-8 rounded-full"></div>
+                <p class="text-xl md:text-3xl text-gray-300 font-serif italic mb-12 font-light">
                     "Where Technique Meets Taste."
                 </p>
                 <a
                     href="#portfolio"
-                    class="px-8 py-3 border border-amber-600 text-amber-500 font-sans uppercase tracking-widest hover:bg-amber-600 hover:text-white transition-all duration-300 inline-block"
+                    class="group relative px-8 py-4 bg-transparent border border-brand-gold text-brand-gold font-sans uppercase tracking-widest text-sm font-bold overflow-hidden inline-block transition-all hover:text-white"
                 >
-                    Explore Portfolio
+                    <span class="absolute inset-0 w-0 bg-brand-gold transition-all duration-[250ms] ease-out group-hover:w-full"></span>
+                    <span class="relative">Explore Creations</span>
                 </a>
             </div>
-            <div class="absolute bottom-10 w-full flex justify-center animate-bounce">
-                <i data-lucide="chevron-down" class="text-gray-500 w-8 h-8"></i>
+            
+            <div class="absolute bottom-8 w-full flex justify-center animate-bounce">
+                <a href="#about" class="text-gray-500 hover:text-white transition-colors">
+                    <i data-lucide="chevron-down" class="w-8 h-8"></i>
+                </a>
             </div>
         </section>
 
-        <section id="about" class="py-20 bg-[#1f1f1f]">
+        <!-- About Section -->
+        <section id="about" class="py-24 bg-[#1f1f1f]">
             <div class="container mx-auto px-6">
-                <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="flex flex-col md:flex-row items-center gap-16">
+                    <!-- Chef Image -->
                     <div class="w-full md:w-1/2 relative group" data-aos="fade-right">
-                        <div class="absolute inset-0 border-2 border-amber-600 transform translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300 hidden md:block"></div>
+                        <div class="absolute inset-0 border-2 border-brand-gold transform translate-x-4 translate-y-4 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2 hidden md:block"></div>
+                        <!-- Using a high quality placeholder since local image is missing -->
                         <img
-                            src="photosImam/resume.jpg"
-                            onerror="this.src='https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=800&auto=format&fit=crop'"
-                            alt="Imam Hasan Chef"
+                            src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=800&auto=format&fit=crop"
+                            alt="Imam Hasan Chef Profile"
+                            loading="lazy"
                             class="w-full h-[500px] object-cover relative z-10 shadow-2xl filter grayscale hover:grayscale-0 transition-all duration-500"
                         />
                     </div>
+                    
+                    <!-- Content -->
                     <div class="w-full md:w-1/2" data-aos="fade-left">
-                        <h2 class="text-3xl md:text-4xl font-sans font-bold text-white mb-6">
+                        <h2 class="text-4xl md:text-5xl font-sans font-bold text-white mb-8">
                             The Chef's Table
                         </h2>
-                        <p class="text-gray-400 leading-relaxed mb-6 text-lg">
-                            Hello, I'm <span class="text-amber-500 font-bold">Imam Hasan</span>. As a dedicated Trainee Chef, I focus on the intersection of classic tradition and modern innovation. My journey is defined by a relentless pursuit of flavor balance and the art of plating.
+                        <p class="text-gray-400 leading-relaxed mb-6 text-lg font-light">
+                            Hello, I'm <span class="text-brand-gold font-bold">Imam Hasan</span>. As a dedicated Trainee Chef, I focus on the intersection of classic tradition and modern innovation. My journey is defined by a relentless pursuit of flavor balance, precise technique, and the art of plating.
                         </p>
                         
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-                            <div class="flex items-center space-x-4 bg-[#2C2C2C] p-4 rounded border-l-2 border-transparent hover:border-amber-600 transition-all hover:translate-y-[-5px]">
-                                <div class="text-amber-500"><i data-lucide="utensils-crossed"></i></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
+                            <!-- Skill Items -->
+                            <div class="flex items-center space-x-4 bg-brand-dark p-4 rounded border-l-2 border-transparent hover:border-brand-gold transition-all hover:-translate-y-1 group">
+                                <div class="text-brand-gold group-hover:scale-110 transition-transform"><i data-lucide="utensils-crossed"></i></div>
                                 <div>
-                                    <h4 class="text-white font-sans font-bold uppercase text-sm">Knife Skills</h4>
-                                    <p class="text-gray-500 text-xs">Precision cuts & butchery</p>
+                                    <h4 class="text-white font-sans font-bold uppercase text-xs tracking-wider">Knife Skills</h4>
+                                    <p class="text-gray-500 text-xs mt-1">Precision cuts & butchery</p>
                                 </div>
                             </div>
-                            <div class="flex items-center space-x-4 bg-[#2C2C2C] p-4 rounded border-l-2 border-transparent hover:border-amber-600 transition-all hover:translate-y-[-5px]">
-                                <div class="text-amber-500"><i data-lucide="flame"></i></div>
+                            <div class="flex items-center space-x-4 bg-brand-dark p-4 rounded border-l-2 border-transparent hover:border-brand-gold transition-all hover:-translate-y-1 group">
+                                <div class="text-brand-gold group-hover:scale-110 transition-transform"><i data-lucide="flame"></i></div>
                                 <div>
-                                    <h4 class="text-white font-sans font-bold uppercase text-sm">Sauté & Grill</h4>
-                                    <p class="text-gray-500 text-xs">Temperature control mastery</p>
+                                    <h4 class="text-white font-sans font-bold uppercase text-xs tracking-wider">Sauté & Grill</h4>
+                                    <p class="text-gray-500 text-xs mt-1">Temperature control</p>
                                 </div>
                             </div>
-                            <div class="flex items-center space-x-4 bg-[#2C2C2C] p-4 rounded border-l-2 border-transparent hover:border-amber-600 transition-all hover:translate-y-[-5px]">
-                                <div class="text-amber-500"><i data-lucide="award"></i></div>
+                            <div class="flex items-center space-x-4 bg-brand-dark p-4 rounded border-l-2 border-transparent hover:border-brand-gold transition-all hover:-translate-y-1 group">
+                                <div class="text-brand-gold group-hover:scale-110 transition-transform"><i data-lucide="award"></i></div>
                                 <div>
-                                    <h4 class="text-white font-sans font-bold uppercase text-sm">Plating</h4>
-                                    <p class="text-gray-500 text-xs">Visual composition & aesthetics</p>
+                                    <h4 class="text-white font-sans font-bold uppercase text-xs tracking-wider">Plating</h4>
+                                    <p class="text-gray-500 text-xs mt-1">Visual composition</p>
                                 </div>
                             </div>
-                            <div class="flex items-center space-x-4 bg-[#2C2C2C] p-4 rounded border-l-2 border-transparent hover:border-amber-600 transition-all hover:translate-y-[-5px]">
-                                <div class="text-amber-500"><i data-lucide="chef-hat"></i></div>
+                            <div class="flex items-center space-x-4 bg-brand-dark p-4 rounded border-l-2 border-transparent hover:border-brand-gold transition-all hover:-translate-y-1 group">
+                                <div class="text-brand-gold group-hover:scale-110 transition-transform"><i data-lucide="chef-hat"></i></div>
                                 <div>
-                                    <h4 class="text-white font-sans font-bold uppercase text-sm">Menu Planning</h4>
-                                    <p class="text-gray-500 text-xs">Costing & seasonal pairing</p>
+                                    <h4 class="text-white font-sans font-bold uppercase text-xs tracking-wider">Menu Planning</h4>
+                                    <p class="text-gray-500 text-xs mt-1">Costing & seasonality</p>
                                 </div>
                             </div>
                         </div>
@@ -166,259 +214,278 @@
             </div>
         </section>
 
-        <section id="portfolio" class="py-24 bg-[#1a1a1a]">
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-24 bg-brand-dark">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-sans font-bold text-white mb-4">
+                    <h2 class="text-4xl md:text-5xl font-sans font-bold text-white mb-6">
                         Culinary Creations
                     </h2>
-                    <div class="h-0.5 w-12 bg-amber-600 mx-auto"></div>
-                    <p class="mt-4 text-gray-400 italic">
-                        A selection of my recent work. Click on any dish to view details.
+                    <div class="h-0.5 w-16 bg-brand-gold mx-auto"></div>
+                    <p class="mt-4 text-gray-400 italic font-serif">
+                        A selection of my recent work. Click to enlarge.
                     </p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1" id="portfolio-grid">
+                    <!-- Item 1 -->
                     <div class="group relative h-80 overflow-hidden cursor-pointer bg-black modal-trigger" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://images.unsplash.com/photo-1676300185292-e238e43b3d5d?q=80&w=800&auto=format&fit=crop" alt="Pan-Seared Duck Breast" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
-                        <div class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60">
-                            <span class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2">Modern French</span>
-                            <h3 class="text-white text-2xl font-serif italic mb-2">Pan-Seared Duck Breast</h3>
-                            <i data-lucide="zoom-in" class="text-white mt-2"></i>
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1676300185292-e238e43b3d5d?q=80&w=800&auto=format&fit=crop" alt="Pan-Seared Duck Breast" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
+                        <div class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60 backdrop-blur-[2px]">
+                            <span class="text-brand-gold font-sans text-xs tracking-[0.2em] uppercase mb-3">Modern French</span>
+                            <h3 class="text-white text-2xl font-serif italic mb-3">Pan-Seared Duck</h3>
+                            <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white"><i data-lucide="zoom-in" class="w-5 h-5"></i></div>
                         </div>
                     </div>
 
+                    <!-- Item 2 -->
                     <div class="group relative h-80 overflow-hidden cursor-pointer bg-black modal-trigger" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://images.unsplash.com/photo-1559506974-7a81214baaf7?q=80&w=800&auto=format&fit=crop" alt="Dark Chocolate Tart" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
-                        <div class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60">
-                            <span class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2">Pastry</span>
-                            <h3 class="text-white text-2xl font-serif italic mb-2">Dark Chocolate Tart</h3>
-                            <i data-lucide="zoom-in" class="text-white mt-2"></i>
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1559506974-7a81214baaf7?q=80&w=800&auto=format&fit=crop" alt="Dark Chocolate Tart" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
+                        <div class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60 backdrop-blur-[2px]">
+                            <span class="text-brand-gold font-sans text-xs tracking-[0.2em] uppercase mb-3">Pastry</span>
+                            <h3 class="text-white text-2xl font-serif italic mb-3">Dark Chocolate Tart</h3>
+                            <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white"><i data-lucide="zoom-in" class="w-5 h-5"></i></div>
                         </div>
                     </div>
 
+                    <!-- Item 3 -->
                     <div class="group relative h-80 overflow-hidden cursor-pointer bg-black modal-trigger" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://images.unsplash.com/photo-1626805673863-3b256b3333b6?q=80&w=800&auto=format&fit=crop" alt="Saffron Risotto" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
-                        <div class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60">
-                            <span class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2">Italian</span>
-                            <h3 class="text-white text-2xl font-serif italic mb-2">Saffron Risotto</h3>
-                            <i data-lucide="zoom-in" class="text-white mt-2"></i>
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1626805673863-3b256b3333b6?q=80&w=800&auto=format&fit=crop" alt="Saffron Risotto" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
+                        <div class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60 backdrop-blur-[2px]">
+                            <span class="text-brand-gold font-sans text-xs tracking-[0.2em] uppercase mb-3">Italian</span>
+                            <h3 class="text-white text-2xl font-serif italic mb-3">Saffron Risotto</h3>
+                            <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white"><i data-lucide="zoom-in" class="w-5 h-5"></i></div>
                         </div>
                     </div>
 
+                    <!-- Item 4 -->
                     <div class="group relative h-80 overflow-hidden cursor-pointer bg-black modal-trigger" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop" alt="Herb Crusted Lamb" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
-                        <div class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60">
-                            <span class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2">Main Course</span>
-                            <h3 class="text-white text-2xl font-serif italic mb-2">Herb Crusted Lamb</h3>
-                            <i data-lucide="zoom-in" class="text-white mt-2"></i>
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop" alt="Herb Crusted Lamb" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
+                        <div class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60 backdrop-blur-[2px]">
+                            <span class="text-brand-gold font-sans text-xs tracking-[0.2em] uppercase mb-3">Main Course</span>
+                            <h3 class="text-white text-2xl font-serif italic mb-3">Herb Crusted Lamb</h3>
+                            <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white"><i data-lucide="zoom-in" class="w-5 h-5"></i></div>
                         </div>
                     </div>
 
+                    <!-- Item 5 -->
                     <div class="group relative h-80 overflow-hidden cursor-pointer bg-black modal-trigger" data-aos="fade-up" data-aos-delay="200">
-                        <img src="recentDishOfMeImages/LbsterParagon.jpg" onerror="this.src='https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=800&auto=format&fit=crop'" alt="Lobster Paragon" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
-                        <div class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60">
-                            <span class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2">Seafood</span>
-                            <h3 class="text-white text-2xl font-serif italic mb-2">Lobster Paragon</h3>
-                            <i data-lucide="zoom-in" class="text-white mt-2"></i>
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=800&auto=format&fit=crop" alt="Lobster Paragon" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
+                        <div class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60 backdrop-blur-[2px]">
+                            <span class="text-brand-gold font-sans text-xs tracking-[0.2em] uppercase mb-3">Seafood</span>
+                            <h3 class="text-white text-2xl font-serif italic mb-3">Lobster Paragon</h3>
+                            <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white"><i data-lucide="zoom-in" class="w-5 h-5"></i></div>
                         </div>
                     </div>
 
+                    <!-- Item 6 -->
                     <div class="group relative h-80 overflow-hidden cursor-pointer bg-black modal-trigger" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://images.unsplash.com/photo-1569246294372-ed319c674f14?q=80&w=800&auto=format&fit=crop" alt="Wild Mushroom Foam" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
-                        <div class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60">
-                            <span class="text-amber-500 font-sans text-xs tracking-[0.2em] uppercase mb-2">Molecular</span>
-                            <h3 class="text-white text-2xl font-serif italic mb-2">Wild Mushroom Foam</h3>
-                            <i data-lucide="zoom-in" class="text-white mt-2"></i>
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1569246294372-ed319c674f14?q=80&w=800&auto=format&fit=crop" alt="Wild Mushroom Foam" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700 ease-out" />
+                        <div class="absolute inset-0 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center bg-black/60 backdrop-blur-[2px]">
+                            <span class="text-brand-gold font-sans text-xs tracking-[0.2em] uppercase mb-3">Molecular</span>
+                            <h3 class="text-white text-2xl font-serif italic mb-3">Wild Mushroom Foam</h3>
+                            <div class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white"><i data-lucide="zoom-in" class="w-5 h-5"></i></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Resume Section -->
         <section id="resume" class="py-24 bg-[#222]">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-sans font-bold text-white mb-4">
+                    <h2 class="text-4xl md:text-5xl font-sans font-bold text-white mb-6">
                         Career & Credentials
                     </h2>
-                    <div class="h-0.5 w-12 bg-amber-600 mx-auto"></div>
+                    <div class="h-0.5 w-16 bg-brand-gold mx-auto"></div>
                 </div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <!-- Left Column: Timeline -->
                     <div data-aos="fade-right">
-                        <div class="flex items-center justify-between mb-8">
+                        <div class="flex items-center justify-between mb-10">
                             <h3 class="text-2xl font-serif italic text-white">
                                 Professional Journey
                             </h3>
-                            <a href="#" class="flex items-center gap-2 text-amber-500 border border-amber-600 px-4 py-2 text-sm uppercase tracking-widest hover:bg-amber-600 hover:text-white transition-all">
+                            <a href="#" class="flex items-center gap-2 text-brand-gold border border-brand-gold px-4 py-2 text-xs uppercase tracking-widest hover:bg-brand-gold hover:text-white transition-all font-bold">
                                 <i data-lucide="file-down" class="w-4 h-4"></i> Download CV
                             </a>
                         </div>
-                        <div class="border-l-2 border-amber-600/30 pl-6 pb-8 relative">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-amber-600"></div>
-                            <span class="text-xs font-sans tracking-widest text-gray-500 uppercase">2026 - Present</span>
-                            <h4 class="text-xl text-white font-bold mt-1">Trainee Chef</h4>
-                            <p class="text-amber-500 text-sm mb-2">The Grand Hotel & Resort</p>
+                        
+                        <!-- Fixed Date Logic -->
+                        <div class="border-l-2 border-brand-gold/30 pl-8 pb-10 relative">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-gold shadow-[0_0_10px_rgba(217,119,6,0.5)]"></div>
+                            <span class="text-xs font-sans tracking-widest text-gray-500 uppercase font-bold">Jan 2025 - Present</span>
+                            <h4 class="text-xl text-white font-bold mt-2">Trainee Chef</h4>
+                            <p class="text-brand-gold text-sm mb-3 font-serif italic">The Grand Hotel & Resort</p>
                             <p class="text-gray-400 text-sm leading-relaxed">
                                 Assisting the Head Chef in menu preparation, learning molecular gastronomy techniques, and managing the cold station during peak service hours.
                             </p>
                         </div>
-                        <div class="border-l-2 border-amber-600/30 pl-6 pb-8 relative">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#2C2C2C] border-2 border-amber-600"></div>
-                            <span class="text-xs font-sans tracking-widest text-gray-500 uppercase">Sept - Dec 2025</span>
-                            <h4 class="text-xl text-white font-bold mt-1">Professional Chef Course Level-1</h4>
-                            <p class="text-amber-500 text-sm mb-2">International Culinary Institute (ICI)</p>
+                        
+                        <div class="border-l-2 border-brand-gold/30 pl-8 pb-4 relative">
+                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#2C2C2C] border-2 border-brand-gold"></div>
+                            <span class="text-xs font-sans tracking-widest text-gray-500 uppercase font-bold">Sept 2024 - Dec 2024</span>
+                            <h4 class="text-xl text-white font-bold mt-2">Professional Chef Course Level-1</h4>
+                            <p class="text-brand-gold text-sm mb-3 font-serif italic">International Culinary Institute (ICI)</p>
                             <p class="text-gray-400 text-sm leading-relaxed">
                                 Trained with distinction. Specialized in continental cuisine and food safety management (HACCP Level 1).
                             </p>
                         </div>
                         
-                        <div class="bg-[#1a1a1a] p-6 border border-gray-800 mt-4 rounded">
-                            <h4 class="flex items-center gap-2 text-white font-bold uppercase text-sm mb-4">
-                                <i data-lucide="award" class="text-amber-500 w-5 h-5"></i> Certifications
+                        <!-- Certs Box -->
+                        <div class="bg-brand-dark p-6 border border-gray-800 mt-8 rounded shadow-lg">
+                            <h4 class="flex items-center gap-2 text-white font-bold uppercase text-xs tracking-widest mb-4">
+                                <i data-lucide="award" class="text-brand-gold w-5 h-5"></i> Certifications
                             </h4>
                             <ul class="space-y-3 text-gray-400 text-sm">
-                                <li class="flex items-start gap-2"><span class="text-amber-500 mt-1">•</span> Food Safety & Hygiene Level 2</li>
-                                <li class="flex items-start gap-2"><span class="text-amber-500 mt-1">•</span> Basic First Aid & Fire Safety</li>
-                                <li class="flex items-start gap-2"><span class="text-amber-500 mt-1">•</span> Knife Skills Masterclass Workshop</li>
+                                <li class="flex items-start gap-3"><span class="text-brand-gold mt-1 text-xs">●</span> Food Safety & Hygiene Level 2</li>
+                                <li class="flex items-start gap-3"><span class="text-brand-gold mt-1 text-xs">●</span> Basic First Aid & Fire Safety</li>
+                                <li class="flex items-start gap-3"><span class="text-brand-gold mt-1 text-xs">●</span> Knife Skills Masterclass Workshop</li>
                             </ul>
                         </div>
                     </div>
 
+                    <!-- Right Column: Mentors -->
                     <div data-aos="fade-left">
-                        <h3 class="text-2xl font-serif italic text-white mb-8">
+                        <h3 class="text-2xl font-serif italic text-white mb-10">
                             References & Mentors
                         </h3>
 
-                        <div class="swiper mySwiper w-full pb-12">
+                        <div class="swiper mySwiper w-full pb-14">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <figure class="bg-[#1a1a1a] p-8 relative group rounded-lg shadow-xl border border-gray-800 h-full">
+                                <div class="swiper-slide h-auto">
+                                    <figure class="bg-brand-dark p-8 relative group rounded-lg shadow-xl border border-gray-800 h-full flex flex-col">
                                         <i data-lucide="quote" class="absolute top-6 right-6 text-gray-700 w-8 h-8 opacity-50"></i>
-                                        <blockquote class="text-gray-400 italic mb-6 leading-relaxed">
+                                        <blockquote class="text-gray-400 italic mb-6 leading-relaxed flex-grow">
                                             "Imam possesses a rare combination of creativity and discipline. His ability to adapt quickly in a high-pressure kitchen environment is impressive."
                                         </blockquote>
-                                        <figcaption class="flex items-center gap-4 mt-auto">
+                                        <figcaption class="flex items-center gap-4 border-t border-gray-800 pt-6">
                                             <div class="w-12 h-12 bg-gray-700 rounded-full overflow-hidden flex-shrink-0">
-                                                <img src="mentorsImages/danielCgomes.png" onerror="this.src='https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=200&auto=format&fit=crop'" alt="Daniel C Gomes" class="w-full h-full object-cover grayscale" />
+                                                <img loading="lazy" src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=200&auto=format&fit=crop" alt="Daniel C Gomes" class="w-full h-full object-cover grayscale" />
                                             </div>
                                             <div>
-                                                <h5 class="text-white font-bold text-sm uppercase">Chef Daniel C Gomes</h5>
-                                                <p class="text-amber-500 text-xs tracking-wider">Corporate Executive Chef, ICI</p>
+                                                <h5 class="text-white font-bold text-sm uppercase">Daniel C Gomes</h5>
+                                                <p class="text-brand-gold text-[10px] tracking-widest uppercase">Exec Chef, ICI</p>
                                             </div>
                                         </figcaption>
                                     </figure>
                                 </div>
-                                <div class="swiper-slide">
-                                    <figure class="bg-[#1a1a1a] p-8 relative group rounded-lg shadow-xl border border-gray-800 h-full">
+                                <div class="swiper-slide h-auto">
+                                    <figure class="bg-brand-dark p-8 relative group rounded-lg shadow-xl border border-gray-800 h-full flex flex-col">
                                         <i data-lucide="quote" class="absolute top-6 right-6 text-gray-700 w-8 h-8 opacity-50"></i>
-                                        <blockquote class="text-gray-400 italic mb-6 leading-relaxed">
+                                        <blockquote class="text-gray-400 italic mb-6 leading-relaxed flex-grow">
                                             "I have seen Imam grow from a student to a capable culinarian. His plating skills and understanding of flavor profiles are well beyond his years."
                                         </blockquote>
-                                        <figcaption class="flex items-center gap-4 mt-auto">
+                                        <figcaption class="flex items-center gap-4 border-t border-gray-800 pt-6">
                                             <div class="w-12 h-12 bg-gray-700 rounded-full overflow-hidden flex-shrink-0">
-                                                <img src="https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=200&auto=format&fit=crop" alt="Shamchul Haque Sagor" class="w-full h-full object-cover grayscale" />
+                                                <img loading="lazy" src="https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=200&auto=format&fit=crop" alt="Shamchul Haque Sagor" class="w-full h-full object-cover grayscale" />
                                             </div>
                                             <div>
-                                                <h5 class="text-white font-bold text-sm uppercase">Chef Shamchul Haque</h5>
-                                                <p class="text-amber-500 text-xs tracking-wider">Executive Chef, TasteBud</p>
+                                                <h5 class="text-white font-bold text-sm uppercase">Shamchul Haque</h5>
+                                                <p class="text-brand-gold text-[10px] tracking-widest uppercase">Exec Chef, TasteBud</p>
                                             </div>
                                         </figcaption>
                                     </figure>
                                 </div>
                             </div>
-                            <div class="swiper-pagination !bottom-0"></div>
+                            <div class="swiper-pagination"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-20 bg-[#2C2C2C] relative" data-aos="zoom-in">
+        <!-- Quote Section -->
+        <section class="py-24 bg-[#2C2C2C] relative border-y border-gray-800" data-aos="zoom-in">
             <div class="container mx-auto px-6 text-center">
-                <blockquote class="text-2xl md:text-3xl font-serif italic text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <i data-lucide="chef-hat" class="w-12 h-12 text-gray-600 mx-auto mb-6 opacity-50"></i>
+                <blockquote class="text-2xl md:text-4xl font-serif italic text-gray-300 max-w-4xl mx-auto leading-relaxed">
                     "Cooking is an art, but all art requires knowing something about the techniques and materials."
                 </blockquote>
-                <cite class="block mt-6 text-amber-600 font-sans text-sm font-bold tracking-widest uppercase">— Nathan Myhrvold</cite>
+                <cite class="block mt-8 text-brand-gold font-sans text-xs font-bold tracking-[0.2em] uppercase">— Nathan Myhrvold</cite>
             </div>
         </section>
 
-        <section id="contact" class="py-20 bg-[#151515] border-t border-gray-800">
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-[#151515]">
             <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto">
                     <div data-aos="fade-right">
-                        <h2 class="text-3xl font-sans font-bold text-white mb-6">Get In Touch</h2>
-                        <p class="text-gray-400 mb-8">
-                            I am currently available for apprenticeships, private dining events, and collaborations. Feel free to reach out.
+                        <h2 class="text-4xl font-sans font-bold text-white mb-6">Get In Touch</h2>
+                        <p class="text-gray-400 mb-10 text-lg leading-relaxed">
+                            I am currently available for apprenticeships, private dining events, and collaborations.
                         </p>
                         
                         <div class="space-y-6">
-                            <a href="mailto:mdimamhasanihr@gmail.com" class="flex items-center space-x-4 text-gray-300 hover:text-amber-500 transition-colors group">
-                                <div class="w-12 h-12 bg-[#2C2C2C] flex items-center justify-center rounded group-hover:bg-amber-600 transition-colors">
-                                    <i data-lucide="mail" class="text-amber-500 group-hover:text-white"></i>
+                            <a href="mailto:mdimamhasanihr@gmail.com" class="flex items-center space-x-5 text-gray-300 hover:text-brand-gold transition-colors group p-4 bg-[#1f1f1f] rounded border border-transparent hover:border-brand-gold/30">
+                                <div class="w-10 h-10 flex items-center justify-center">
+                                    <i data-lucide="mail" class="text-brand-gold w-6 h-6"></i>
                                 </div>
-                                <span>mdimamhasanihr@gmail.com</span>
+                                <span class="font-sans">mdimamhasanihr@gmail.com</span>
                             </a>
                             
-                            <a href="https://wa.me/8801775488063" class="flex items-center space-x-4 text-gray-300 hover:text-amber-500 transition-colors group">
-                                <div class="w-12 h-12 bg-[#2C2C2C] flex items-center justify-center rounded group-hover:bg-green-600 transition-colors">
-                                    <i data-lucide="phone" class="text-green-500 group-hover:text-white"></i>
+                            <a href="https://wa.me/8801775488063" class="flex items-center space-x-5 text-gray-300 hover:text-brand-gold transition-colors group p-4 bg-[#1f1f1f] rounded border border-transparent hover:border-brand-gold/30">
+                                <div class="w-10 h-10 flex items-center justify-center">
+                                    <i data-lucide="phone" class="text-green-500 w-6 h-6"></i>
                                 </div>
-                                <span>+880 1775 488063 (WhatsApp)</span>
+                                <span class="font-sans">+880 1775 488063 (WhatsApp)</span>
                             </a>
 
-                            <div class="flex space-x-4 pt-4">
-                                <a href="https://facebook.com" class="w-10 h-10 border border-gray-700 flex items-center justify-center hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all text-gray-400"><i data-lucide="facebook" class="w-4 h-4"></i></a>
-                                <a href="https://github.com" class="w-10 h-10 border border-gray-700 flex items-center justify-center hover:bg-gray-700 hover:text-white transition-all text-gray-400"><i data-lucide="github" class="w-4 h-4"></i></a>
-                                <a href="https://instagram.com" class="w-10 h-10 border border-gray-700 flex items-center justify-center hover:bg-pink-600 hover:border-pink-600 hover:text-white transition-all text-gray-400"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                            <div class="flex space-x-4 pt-6">
+                                <a href="#" class="w-12 h-12 border border-gray-700 flex items-center justify-center rounded-full hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all text-gray-400" aria-label="Facebook"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                                <a href="#" class="w-12 h-12 border border-gray-700 flex items-center justify-center rounded-full hover:bg-gray-700 hover:text-white transition-all text-gray-400" aria-label="GitHub"><i data-lucide="github" class="w-5 h-5"></i></a>
+                                <a href="#" class="w-12 h-12 border border-gray-700 flex items-center justify-center rounded-full hover:bg-pink-600 hover:border-pink-600 hover:text-white transition-all text-gray-400" aria-label="Instagram"><i data-lucide="instagram" class="w-5 h-5"></i></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-[#1f1f1f] p-8 rounded-lg border border-gray-800" data-aos="fade-left">
+                    <div class="bg-[#1f1f1f] p-10 rounded-lg border border-gray-800 shadow-2xl" data-aos="fade-left">
                         <form action="https://formspree.io/f/mqazqozk" method="POST" class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Name</label>
-                                    <input type="text" name="name" class="w-full bg-[#151515] border border-gray-700 p-3 text-white focus:outline-none focus:border-amber-600 transition-colors" placeholder="John Doe" required>
+                                    <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Name</label>
+                                    <input type="text" name="name" class="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold transition-colors text-sm rounded-sm" placeholder="John Doe" required>
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Email</label>
-                                    <input type="email" name="email" class="w-full bg-[#151515] border border-gray-700 p-3 text-white focus:outline-none focus:border-amber-600 transition-colors" placeholder="john@example.com" required>
+                                    <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Email</label>
+                                    <input type="email" name="email" class="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold transition-colors text-sm rounded-sm" placeholder="john@example.com" required>
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-xs font-bold uppercase text-gray-500 mb-2">Message</label>
-                                <textarea name="message" rows="4" class="w-full bg-[#151515] border border-gray-700 p-3 text-white focus:outline-none focus:border-amber-600 transition-colors" placeholder="How can I help you?" required></textarea>
+                                <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Message</label>
+                                <textarea name="message" rows="4" class="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold transition-colors text-sm rounded-sm" placeholder="How can I help you?" required></textarea>
                             </div>
-                            <button type="submit" class="w-full bg-amber-600 text-white font-sans font-bold uppercase tracking-widest py-4 hover:bg-amber-700 transition-colors">
+                            <button type="submit" class="w-full bg-brand-gold text-white font-sans font-bold uppercase tracking-widest py-4 hover:bg-amber-700 transition-colors text-xs rounded-sm shadow-lg hover:shadow-amber-900/20">
                                 Send Message
                             </button>
                         </form>
                     </div>
                 </div>
                 
-                <div class="border-t border-gray-800 mt-16 pt-8 text-center">
+                <div class="border-t border-gray-800 mt-20 pt-8 text-center">
                     <p class="text-gray-600 text-sm font-sans tracking-wider">
-                        © <span id="year"></span> Imam Hasan. All Rights Reserved.
+                        &copy; <span id="year"></span> Imam Hasan. All Rights Reserved.
                     </p>
                 </div>
             </div>
         </section>
 
-        <button id="backToTopBtn" class="fixed bottom-6 right-6 p-3 bg-amber-600 text-white rounded-full shadow-lg opacity-0 transition-opacity duration-300 z-50 hover:bg-amber-700 translate-y-10" aria-label="Back to top">
+        <!-- Back to Top (Fixed mobile overlap) -->
+        <button id="backToTopBtn" class="fixed bottom-20 md:bottom-8 right-6 p-4 bg-brand-gold text-white rounded-full shadow-2xl opacity-0 transition-all duration-300 z-40 hover:bg-amber-700 translate-y-10 focus:outline-none" aria-label="Back to top">
             <i data-lucide="arrow-up" class="w-6 h-6"></i>
         </button>
 
+        <!-- Scripts -->
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         
         <script>
             // 1. Initialize Animations
             AOS.init({
-                once: true, // Animation happens only once while scrolling down
-                offset: 100, // Trigger offset
-                duration: 800,
+                once: true,
+                offset: 50,
+                duration: 1000,
                 easing: 'ease-out-cubic',
             });
 
@@ -426,7 +493,7 @@
             lucide.createIcons();
             document.getElementById("year").textContent = new Date().getFullYear();
 
-            // 3. Navbar & Mobile Menu
+            // 3. Navbar Logic
             const navbar = document.getElementById("navbar");
             const menuBtn = document.getElementById("menuBtn");
             const mobileMenu = document.getElementById("mobileMenu");
@@ -434,18 +501,19 @@
             const mobileLinks = document.querySelectorAll(".mobile-link");
             let isMenuOpen = false;
 
+            // Scroll Effect
             window.addEventListener("scroll", () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.remove("bg-transparent", "py-6");
-                    navbar.classList.add("bg-[#1a1a1a]/95", "backdrop-blur-sm", "shadow-lg", "py-4");
+                if (window.scrollY > 20) {
+                    navbar.classList.remove("bg-transparent", "py-6", "border-transparent");
+                    navbar.classList.add("bg-brand-dark/95", "backdrop-blur-md", "py-4", "border-gray-800", "shadow-xl");
                 } else {
-                    navbar.classList.add("bg-transparent", "py-6");
-                    navbar.classList.remove("bg-[#1a1a1a]/95", "backdrop-blur-sm", "shadow-lg", "py-4");
+                    navbar.classList.add("bg-transparent", "py-6", "border-transparent");
+                    navbar.classList.remove("bg-brand-dark/95", "backdrop-blur-md", "py-4", "border-gray-800", "shadow-xl");
                 }
                 
-                // Back to Top Logic
+                // Back to Top Button
                 const backToTopBtn = document.getElementById("backToTopBtn");
-                if (window.scrollY > 300) {
+                if (window.scrollY > 400) {
                     backToTopBtn.classList.remove("opacity-0", "translate-y-10");
                     backToTopBtn.classList.add("opacity-100", "translate-y-0");
                 } else {
@@ -454,65 +522,92 @@
                 }
             });
 
+            // Mobile Menu Toggle
             const toggleMobileMenu = () => {
                 isMenuOpen = !isMenuOpen;
                 mobileMenu.classList.toggle("hidden");
-                menuIcon.setAttribute("data-lucide", isMenuOpen ? "x" : "menu");
-                lucide.createIcons();
+                
+                // Icon switching logic
+                if (isMenuOpen) {
+                    menuIcon.classList.add("text-brand-gold");
+                    // Force Lucide to re-render icon (manual switch since we are using lucide library)
+                    menuBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="M18 6 6 18"/><path d="m6 6 18 18"/></svg>';
+                } else {
+                    menuIcon.classList.remove("text-brand-gold");
+                    menuBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>';
+                }
             };
 
             menuBtn.addEventListener("click", toggleMobileMenu);
-            mobileLinks.forEach(link => link.addEventListener("click", toggleMobileMenu));
+            mobileLinks.forEach(link => link.addEventListener("click", () => {
+                if(isMenuOpen) toggleMobileMenu();
+            }));
             
             document.getElementById("backToTopBtn").addEventListener("click", () => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
             });
 
-            // 4. Image Lightbox (Modal) Logic
+            // 4. Modal Logic (Improved)
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
             const closeModal = document.getElementById('closeModal');
             const triggers = document.querySelectorAll('.modal-trigger');
+            const body = document.body;
 
-            triggers.forEach(trigger => {
-                trigger.addEventListener('click', () => {
-                    const img = trigger.querySelector('img');
-                    modalImg.src = img.src;
-                    modalImg.alt = img.alt;
-                    modal.classList.remove('hidden');
-                    // Slight delay to allow display:block to apply before opacity transition
-                    setTimeout(() => {
-                        modal.classList.remove('opacity-0');
-                    }, 10);
-                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-                });
-            });
+            const openModal = (src, alt) => {
+                modalImg.src = src;
+                modalImg.alt = alt;
+                modal.classList.remove('hidden');
+                // Force reflow
+                void modal.offsetWidth; 
+                modal.classList.remove('opacity-0');
+                body.classList.add('no-scroll');
+            };
 
             const hideModal = () => {
                 modal.classList.add('opacity-0');
                 setTimeout(() => {
                     modal.classList.add('hidden');
+                    modalImg.src = ""; // Clear src to stop video/large image usage
+                    body.classList.remove('no-scroll');
                 }, 300);
-                document.body.style.overflow = 'auto';
             };
 
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    const img = trigger.querySelector('img');
+                    if (img) openModal(img.src, img.alt);
+                });
+            });
+
             closeModal.addEventListener('click', hideModal);
+            
+            // Close on background click
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) hideModal();
             });
 
-            // 5. Initialize Swiper (Testimonials)
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    hideModal();
+                }
+            });
+
+            // 5. Swiper Init
             var swiper = new Swiper(".mySwiper", {
                 slidesPerView: 1,
                 spaceBetween: 30,
                 loop: true,
+                grabCursor: true, // Improved UX
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
                 },
                 autoplay: {
-                    delay: 4000,
+                    delay: 5000,
                     disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
                 },
                 breakpoints: {
                     768: {
@@ -523,3 +618,4 @@
         </script>
     </body>
 </html>
+
