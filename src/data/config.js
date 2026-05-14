@@ -4,6 +4,7 @@ export const siteConfig = {
   tagline: 'Where Technique Meets Taste.',
   email: 'mdimamhasanihr@gmail.com',
   phone: '+880 1775 488063',
+  location: 'Dhaka, Bangladesh',
   whatsapp: 'https://wa.me/8801775488063',
   social: {
     facebook: 'https://www.facebook.com/imam.hasan.281291',

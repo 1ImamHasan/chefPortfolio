@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { siteConfig } from '../data/config'
 
 export default function Loader() {
   const [visible, setVisible] = useState(true)
@@ -33,7 +34,7 @@ export default function Loader() {
 
       {/* Name */}
       <h1 className="text-white font-sans font-bold tracking-[0.4em] uppercase text-lg mb-2">
-        Imam Hasan
+        {siteConfig.name}
       </h1>
       <p className="text-brand-gold font-serif italic text-sm tracking-widest">
         Where Technique Meets Taste.

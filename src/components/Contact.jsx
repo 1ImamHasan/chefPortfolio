@@ -22,7 +22,7 @@ const InstagramIcon = () => (
 export default function Contact() {
   const formRef = useRef()
   const [status, setStatus] = useState('idle') // idle | loading | success | error
-  const { email, phone, whatsapp, social } = siteConfig
+  const { email, phone, whatsapp, social, location } = siteConfig
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -54,11 +54,11 @@ export default function Contact() {
             <div className="space-y-6">
               <div className="flex items-center space-x-5 text-gray-300 p-4 bg-[#1f1f1f] rounded border border-transparent">
                 <MapPin className="text-brand-gold w-6 h-6 flex-shrink-0" />
-                <span className="font-sans">Dhaka, Bangladesh</span>
+                <span className="font-sans">{location}</span>
               </div>
               <div className="flex items-center space-x-5 text-gray-300 p-4 bg-[#1f1f1f] rounded border border-transparent">
                 <Phone className="text-brand-gold w-6 h-6 flex-shrink-0" />
-                <span className="font-sans">+880 1775 488063</span>
+                <span className="font-sans">{phone}</span>
               </div>
               <div className="flex items-center space-x-5 text-green-400 p-4 bg-green-400/10 rounded border border-green-400/20">
                 <Clock className="w-6 h-6 flex-shrink-0" />
