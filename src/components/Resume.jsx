@@ -16,9 +16,9 @@ export default function Resume() {
           <div data-aos="fade-right">
             <div className="flex items-center justify-between mb-10">
               <h3 className="text-2xl font-serif italic text-white">Professional Journey</h3>
-              <a href="#" className="flex items-center gap-2 text-brand-gold border border-brand-gold px-4 py-2 text-xs uppercase tracking-widest hover:bg-brand-gold hover:text-white transition-all font-bold">
-                <FileDown className="w-4 h-4" /> Download CV
-              </a>
+              {/* <a href="#" className="flex items-center gap-2 text-brand-gold border border-brand-gold px-4 py-2 text-xs uppercase tracking-widest hover:bg-brand-gold hover:text-white transition-all font-bold">
+  <FileDown className="w-4 h-4" /> Download CV
+</a> */}
             </div>
 
             {timeline.map((item, i) => (
