@@ -18,8 +18,8 @@ export default function Navbar() {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
       scrolled
-        ? 'bg-brand-dark/95 backdrop-blur-md py-4 border-b border-gray-800 shadow-xl'
-        : 'bg-transparent py-6 border-b border-transparent'
+        ? 'bg-brand-dark/95 backdrop-blur-md py-4 border-b border-gray-800 shadow-xl translate-y-0'
+        : 'bg-transparent py-6 border-b border-transparent -translate-y-0'
     }`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <a href="#home" className="text-brand-gold font-sans font-bold text-2xl tracking-widest border-2 border-brand-gold p-2 hover:bg-brand-gold hover:text-white transition-colors">
@@ -31,7 +31,7 @@ export default function Navbar() {
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              className="hover:text-brand-gold transition-colors py-2"
+              className="hover:text-brand-gold transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold after:transition-all after:duration-300 hover:after:w-full"
             >
               {link}
             </a>

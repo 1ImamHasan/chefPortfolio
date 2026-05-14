@@ -16,8 +16,15 @@ export default {
           dark: '#1a1a1a',
         },
       },
+      keyframes: {
+        heroZoom: {
+          '0%': { transform: 'scale(1.1)' },
+          '100%': { transform: 'scale(1.0)' },
+        },
+      },
       animation: {
         'slow-pulse': 'pulse 10s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'hero-zoom': 'heroZoom 10s ease-out forwards',
       },
     },
   },

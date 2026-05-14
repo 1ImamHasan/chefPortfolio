@@ -26,10 +26,11 @@ export default function About() {
             />
           </div>
 
-          <div className="w-full md:w-1/2" data-aos="fade-left">
-            <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-8">
+          <div className="w-full md:w-1/2" data-aos="fade-up" data-aos-delay="200">
+            <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-4">
               The Chef's Table
             </h2>
+            <div className="h-0.5 w-16 bg-brand-gold mb-8 transition-all duration-700"></div>
             <p className="text-gray-400 leading-relaxed mb-6 text-lg font-light">
               Hello, I'm{' '}
               <span className="text-brand-gold font-bold">{name}</span>. As a
@@ -42,7 +43,7 @@ export default function About() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
               {skills.map((skill) => (
                 <div key={skill.title}
-                  className="flex items-center space-x-4 bg-brand-dark p-4 rounded border-l-2 border-transparent hover:border-brand-gold transition-all hover:-translate-y-1 group">
+                  className="flex items-center space-x-4 bg-brand-dark p-4 rounded border-l-2 border-transparent hover:border-brand-gold hover:shadow-[0_0_15px_rgba(217,119,6,0.15)] transition-all duration-300 hover:-translate-y-2 group">
                   <div className="text-brand-gold group-hover:scale-110 transition-transform w-7 h-7">
                     {skill.icon}
                   </div>

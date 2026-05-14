@@ -10,7 +10,7 @@ export default function Hero() {
         <img
           src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop"
           alt="Fine Dining Atmosphere"
-          className="w-full h-full object-cover opacity-40 transform scale-105 animate-slow-pulse"
+          className="w-full h-full object-cover opacity-40 transform scale-110 transition-transform duration-[10000ms] ease-out animate-hero-zoom"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-transparent"></div>
       </div>

@@ -46,7 +46,7 @@ export default function Contact() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto">
 
-          <div data-aos="fade-right">
+          <div data-aos="fade-right" data-aos-duration="800">
             <h2 className="text-4xl font-sans font-bold text-white mb-6">Get In Touch</h2>
             <p className="text-gray-400 mb-10 text-lg leading-relaxed">
               I am currently available for apprenticeships, private dining events, and collaborations.
@@ -83,7 +83,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="bg-[#1f1f1f] p-10 rounded-lg border border-gray-800 shadow-2xl" data-aos="fade-left">
+          <div className="bg-[#1f1f1f] p-10 rounded-lg border border-gray-800 shadow-2xl" data-aos="fade-left" data-aos-duration="800">
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
