@@ -113,7 +113,7 @@ export default function Contact() {
               )}
 
               <button type="submit" disabled={status === 'loading'}
-                className="w-full bg-brand-gold text-white font-sans font-bold uppercase tracking-widest py-4 hover:bg-amber-700 transition-colors text-xs rounded-sm shadow-lg flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed">
+                className="w-full bg-brand-gold text-white font-sans font-bold uppercase tracking-widest py-4 hover:bg-amber-600 hover:shadow-[0_0_20px_rgba(217,119,6,0.4)] transition-all text-xs rounded-sm shadow-lg flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed">
                 {status === 'loading' ? (
                   <>
                     <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>

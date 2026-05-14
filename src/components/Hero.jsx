@@ -33,10 +33,11 @@ export default function Hero() {
         </a>
       </div>
 
-      <div className="absolute bottom-8 w-full flex justify-center animate-bounce">
+      <div className="absolute bottom-8 w-full flex flex-col items-center gap-2 animate-bounce">
         <a href="#about" className="text-gray-500 hover:text-white transition-colors">
           <ChevronDown className="w-8 h-8" />
         </a>
+        <span className="text-gray-500 text-[10px] tracking-[0.3em] uppercase font-sans">Scroll to explore</span>
       </div>
     </section>
   )

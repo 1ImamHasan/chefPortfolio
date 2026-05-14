@@ -25,7 +25,7 @@ export default function Resume() {
               <div key={i} className="border-l-2 border-brand-gold/30 pl-8 pb-10 relative">
                 <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full ${
                   item.active
-                    ? 'bg-brand-gold shadow-[0_0_10px_rgba(217,119,6,0.5)]'
+                    ? 'bg-brand-gold shadow-[0_0_20px_rgba(217,119,6,0.8)]'
                     : 'bg-[#2C2C2C] border-2 border-brand-gold'
                 }`}></div>
                 <span className="text-xs font-sans tracking-widest text-gray-500 uppercase font-bold">{item.date}</span>
@@ -67,7 +67,7 @@ export default function Resume() {
                     <Quote className="absolute top-6 right-6 text-gray-700 w-8 h-8 opacity-50" />
                     <blockquote className="text-gray-400 italic mb-6 leading-relaxed flex-grow">"{m.quote}"</blockquote>
                     <figcaption className="flex items-center gap-4 border-t border-gray-800 pt-6">
-                      <div className="w-12 h-12 bg-gray-700 rounded-full overflow-hidden flex-shrink-0">
+                      <div className="w-16 h-16 bg-gray-700 rounded-full overflow-hidden flex-shrink-0">
                         <img loading="lazy" src={m.img} alt={m.name} className="w-full h-full object-cover grayscale" />
                       </div>
                       <div>

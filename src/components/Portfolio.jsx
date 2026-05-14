@@ -14,7 +14,7 @@ export default function Portfolio() {
           <p className="mt-4 text-gray-400 italic font-serif">A selection of my recent work. Click to enlarge.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {dishes.map((dish, i) => (
             <div
               key={i}

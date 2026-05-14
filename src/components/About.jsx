@@ -22,7 +22,7 @@ export default function About() {
               src="/photosImam/resume.jpg"
               alt={`${name} Chef Profile`}
               loading="lazy"
-              className="w-full h-[500px] object-cover relative z-10 shadow-2xl filter grayscale hover:grayscale-0 transition-all duration-500"
+              className="w-full h-[500px] object-cover relative z-10 shadow-2xl transition-all duration-500"
             />
           </div>
 
@@ -43,7 +43,7 @@ export default function About() {
               {skills.map((skill) => (
                 <div key={skill.title}
                   className="flex items-center space-x-4 bg-brand-dark p-4 rounded border-l-2 border-transparent hover:border-brand-gold transition-all hover:-translate-y-1 group">
-                  <div className="text-brand-gold group-hover:scale-110 transition-transform">
+                  <div className="text-brand-gold group-hover:scale-110 transition-transform w-7 h-7">
                     {skill.icon}
                   </div>
                   <div>
