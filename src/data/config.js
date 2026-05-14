@@ -43,7 +43,7 @@ export const dishes = [
     title: 'Herb Crusted Lamb',
   },
   {
-    src: '/recentDishOfMeImages/LbsterParagon.jpg',
+    src: '/recentDishOfMeImages/LobsterParagon.jpg',
     alt: 'Lobster Paragon',
     category: 'Seafood',
     title: 'Lobster Paragon',

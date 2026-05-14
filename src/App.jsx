@@ -1,6 +1,4 @@
-import { useEffect, lazy, Suspense } from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import { lazy, Suspense } from 'react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -8,14 +6,15 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Loader from './components/Loader'
+import CustomCursor from './components/CustomCursor'
 
-const About = lazy(() => import('./components/About'))
+const About    = lazy(() => import('./components/About'))
 const Portfolio = lazy(() => import('./components/Portfolio'))
-const Resume = lazy(() => import('./components/Resume'))
-const Quote = lazy(() => import('./components/Quote'))
-const Recipes = lazy(() => import('./components/Recipes'))
-const Contact = lazy(() => import('./components/Contact'))
-const Footer = lazy(() => import('./components/Footer'))
+const Resume   = lazy(() => import('./components/Resume'))
+const Quote    = lazy(() => import('./components/Quote'))
+const Recipes  = lazy(() => import('./components/Recipes'))
+const Contact  = lazy(() => import('./components/Contact'))
+const Footer   = lazy(() => import('./components/Footer'))
 
 const SectionWrapper = ({ children }) => (
   <motion.div
@@ -29,17 +28,9 @@ const SectionWrapper = ({ children }) => (
 )
 
 function App() {
-  useEffect(() => {
-    AOS.init({
-      once: true,
-      offset: 50,
-      duration: 1000,
-      easing: 'ease-out-cubic',
-    })
-  }, [])
-
   return (
     <>
+      <CustomCursor />
       <Loader />
       <div className="bg-brand-dark text-gray-300 antialiased overflow-x-hidden font-sans selection:bg-brand-gold selection:text-white">
         <Navbar />

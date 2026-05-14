@@ -16,11 +16,11 @@ export default defineConfig({
           if (id.includes('node_modules/swiper')) {
             return 'swiper-vendor'
           }
-          if (id.includes('node_modules/aos')) {
-            return 'aos-vendor'
-          }
           if (id.includes('node_modules/lucide-react')) {
             return 'lucide-vendor'
+          }
+          if (id.includes('node_modules/framer-motion')) {
+            return 'framer-vendor'
           }
         },
       },

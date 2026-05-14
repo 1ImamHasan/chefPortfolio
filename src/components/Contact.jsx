@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { motion } from 'framer-motion'
 import emailjs from '@emailjs/browser'
 import { MapPin, Phone, Send, CheckCircle, XCircle, Clock } from 'lucide-react'
 import { siteConfig } from '../data/config'
@@ -21,8 +22,8 @@ const InstagramIcon = () => (
 
 export default function Contact() {
   const formRef = useRef()
-  const [status, setStatus] = useState('idle') // idle | loading | success | error
-  const { email, phone, whatsapp, social, location } = siteConfig
+  const [status, setStatus] = useState('idle')
+  const { phone, social, location } = siteConfig
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -46,17 +47,18 @@ export default function Contact() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-6xl mx-auto">
 
-          <div data-aos="fade-right" data-aos-duration="800">
+          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <h2 className="text-3xl md:text-4xl font-sans font-bold text-white mb-6">Get In Touch</h2>
             <p className="text-gray-400 mb-10 text-lg leading-relaxed">
               I am currently available for apprenticeships, private dining events, and collaborations.
             </p>
             <div className="space-y-6">
-              <div className="flex items-center space-x-5 text-gray-300 p-4 bg-[#1f1f1f] rounded border border-transparent">
+              <div className="flex items-center space-x-5 text-gray-300 p-4 bg-[#1f1f1f] rounded">
                 <MapPin className="text-brand-gold w-6 h-6 flex-shrink-0" />
                 <span className="font-sans">{location}</span>
               </div>
-              <div className="flex items-center space-x-5 text-gray-300 p-4 bg-[#1f1f1f] rounded border border-transparent">
+              <div className="flex items-center space-x-5 text-gray-300 p-4 bg-[#1f1f1f] rounded">
                 <Phone className="text-brand-gold w-6 h-6 flex-shrink-0" />
                 <span className="font-sans">{phone}</span>
               </div>
@@ -64,8 +66,6 @@ export default function Contact() {
                 <Clock className="w-6 h-6 flex-shrink-0" />
                 <span className="font-sans text-sm font-bold uppercase tracking-widest">Available for Work</span>
               </div>
-
-
               <div className="flex space-x-4 pt-6">
                 <a href={social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"
                   className="w-12 h-12 border border-gray-700 flex items-center justify-center rounded-full hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all text-gray-400">
@@ -81,28 +81,29 @@ export default function Contact() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-[#1f1f1f] p-6 md:p-10 rounded-lg border border-gray-800 shadow-2xl" data-aos="fade-left" data-aos-duration="800">
+          <motion.div className="bg-[#1f1f1f] p-6 md:p-10 rounded-lg border border-gray-800 shadow-2xl"
+            initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Name</label>
                   <input type="text" name="name" required placeholder="John Doe"
-                    className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none focus:ring-0 transition-colors text-sm rounded-sm" />
+                    className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm" />
                 </div>
                 <div>
                   <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Email</label>
                   <input type="email" name="email" required placeholder="john@example.com"
-                    className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none focus:ring-0 transition-colors text-sm rounded-sm" />
+                    className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm" />
                 </div>
               </div>
               <div>
                 <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Message</label>
                 <textarea name="message" rows="4" required placeholder="How can I help you?"
-                  className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none focus:ring-0 transition-colors text-sm rounded-sm"></textarea>
+                  className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm"></textarea>
               </div>
-
               {status === 'success' && (
                 <div className="flex items-center gap-3 text-green-400 bg-green-400/10 p-4 rounded border border-green-400/20">
                   <CheckCircle className="w-5 h-5 flex-shrink-0" />
@@ -115,22 +116,17 @@ export default function Contact() {
                   <span className="text-sm">Something went wrong. Please try again.</span>
                 </div>
               )}
-
               <button type="submit" disabled={status === 'loading'}
                 className="w-full bg-brand-gold text-white font-sans font-bold uppercase tracking-widest py-4 hover:bg-amber-600 hover:shadow-[0_0_20px_rgba(217,119,6,0.4)] transition-all text-xs rounded-sm shadow-lg flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed">
                 {status === 'loading' ? (
-                  <>
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    Sending...
-                  </>
+                  <><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>Sending...</>
                 ) : (
-                  <>
-                    <Send className="w-4 h-4" /> Send Message
-                  </>
+                  <><Send className="w-4 h-4" /> Send Message</>
                 )}
               </button>
             </form>
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>
