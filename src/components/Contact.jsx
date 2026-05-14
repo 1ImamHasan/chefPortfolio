@@ -85,18 +85,18 @@ export default function Contact() {
                 <div>
                   <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Name</label>
                   <input type="text" name="name" required placeholder="John Doe"
-                    className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold transition-colors text-sm rounded-sm" />
+                    className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none focus:ring-0 transition-colors text-sm rounded-sm" />
                 </div>
                 <div>
                   <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Email</label>
                   <input type="email" name="email" required placeholder="john@example.com"
-                    className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold transition-colors text-sm rounded-sm" />
+                    className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none focus:ring-0 transition-colors text-sm rounded-sm" />
                 </div>
               </div>
               <div>
                 <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Message</label>
                 <textarea name="message" rows="4" required placeholder="How can I help you?"
-                  className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold transition-colors text-sm rounded-sm"></textarea>
+                  className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none focus:ring-0 transition-colors text-sm rounded-sm"></textarea>
               </div>
 
               {status === 'success' && (
