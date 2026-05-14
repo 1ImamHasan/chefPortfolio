@@ -3,6 +3,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import { AnimatePresence, motion } from 'framer-motion'
 
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -15,6 +16,17 @@ const Quote = lazy(() => import('./components/Quote'))
 const Recipes = lazy(() => import('./components/Recipes'))
 const Contact = lazy(() => import('./components/Contact'))
 const Footer = lazy(() => import('./components/Footer'))
+
+const SectionWrapper = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.1 }}
+    transition={{ duration: 0.7, ease: 'easeOut' }}
+  >
+    {children}
+  </motion.div>
+)
 
 function App() {
   useEffect(() => {
@@ -33,13 +45,15 @@ function App() {
         <Navbar />
         <Hero />
         <Suspense fallback={<div className="h-screen bg-brand-dark" />}>
-          <About />
-          <Portfolio />
-          <Resume />
-          <Quote />
-          <Recipes />
-          <Contact />
-          <Footer />
+          <AnimatePresence>
+            <SectionWrapper><About /></SectionWrapper>
+            <SectionWrapper><Portfolio /></SectionWrapper>
+            <SectionWrapper><Resume /></SectionWrapper>
+            <SectionWrapper><Quote /></SectionWrapper>
+            <SectionWrapper><Recipes /></SectionWrapper>
+            <SectionWrapper><Contact /></SectionWrapper>
+            <SectionWrapper><Footer /></SectionWrapper>
+          </AnimatePresence>
         </Suspense>
       </div>
     </>
