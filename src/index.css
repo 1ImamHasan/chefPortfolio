@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.swiper-pagination-bullet-active {
+  background-color: #d97706 !important;
+}
+.swiper-pagination-bullet {
+  background-color: #4b5563;
+}
+.no-scroll {
+  overflow: hidden;
+}
+*:focus-visible {
+  outline: 2px solid #d97706;
+  outline-offset: 2px;
+}

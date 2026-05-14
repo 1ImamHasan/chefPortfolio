@@ -1,0 +1,46 @@
+import { ChevronDown } from 'lucide-react'
+
+export default function Hero() {
+  return (
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop"
+          alt="Fine Dining Atmosphere"
+          className="w-full h-full object-cover opacity-40 transform scale-105 animate-slow-pulse"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-transparent"></div>
+      </div>
+
+      <div
+        className="relative z-10 text-center px-6 max-w-4xl mx-auto"
+        data-aos="fade-up"
+        data-aos-duration="1200"
+      >
+        <p className="text-brand-gold font-sans tracking-[0.4em] uppercase text-xs md:text-sm mb-6 font-bold">
+          Portfolio
+        </p>
+        <h1 className="text-5xl md:text-8xl font-sans font-bold text-white mb-6 tracking-tight leading-tight">
+          IMAM HASAN
+        </h1>
+        <div className="h-1 w-24 bg-brand-gold mx-auto mb-8 rounded-full"></div>
+        <p className="text-xl md:text-3xl text-gray-300 font-serif italic mb-12 font-light">
+          "Where Technique Meets Taste."
+        </p>
+        <a
+          href="#portfolio"
+          className="group relative px-8 py-4 bg-transparent border border-brand-gold text-brand-gold font-sans uppercase tracking-widest text-sm font-bold overflow-hidden inline-block transition-all hover:text-white"
+        >
+          <span className="absolute inset-0 w-0 bg-brand-gold transition-all duration-[250ms] ease-out group-hover:w-full"></span>
+          <span className="relative">Explore Creations</span>
+        </a>
+      </div>
+
+      <div className="absolute bottom-8 w-full flex justify-center animate-bounce">
+        <a href="#about" className="text-gray-500 hover:text-white transition-colors">
+          <ChevronDown className="w-8 h-8" />
+        </a>
+      </div>
+    </section>
+  )
+}
