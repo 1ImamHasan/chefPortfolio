@@ -12,7 +12,7 @@ export default function Resume() {
           <div className="h-0.5 w-0 bg-brand-gold mx-auto transition-all duration-700 group-hover:w-16 aos-animate:w-16"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           <div data-aos="fade-right">
             <div className="flex items-center justify-between mb-10">
               <h3 className="text-2xl font-serif italic text-white">Professional Journey</h3>

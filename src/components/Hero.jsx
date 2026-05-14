@@ -19,11 +19,11 @@ export default function Hero() {
         <p className="text-brand-gold font-sans tracking-[0.4em] uppercase text-xs md:text-sm mb-6 font-bold">
           Portfolio
         </p>
-        <h1 className="text-5xl md:text-8xl font-sans font-bold text-white mb-6 tracking-tight leading-tight">
+        <h1 className="text-4xl md:text-8xl font-sans font-bold text-white mb-6 tracking-tight leading-tight">
           {name.toUpperCase()}
         </h1>
         <div className="h-1 w-24 bg-brand-gold mx-auto mb-8 rounded-full"></div>
-        <p className="text-xl md:text-3xl text-gray-300 font-serif italic mb-12 font-light">
+        <p className="text-lg md:text-3xl text-gray-300 font-serif italic mb-12 font-light">
           "Where Technique Meets Taste."
         </p>
         <a href="#portfolio"

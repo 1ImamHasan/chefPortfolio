@@ -14,7 +14,7 @@ export default function About() {
   return (
     <section id="about" className="py-24 bg-[#1f1f1f]">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center gap-16">
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
 
           <div className="w-full md:w-1/2 relative group" data-aos="fade-right">
             <div className="absolute inset-0 border-2 border-brand-gold transform translate-x-4 translate-y-4 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2 hidden md:block"></div>

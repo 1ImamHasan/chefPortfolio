@@ -44,7 +44,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 bg-[#151515]">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-6xl mx-auto">
 
           <div data-aos="fade-right" data-aos-duration="800">
             <h2 className="text-4xl font-sans font-bold text-white mb-6">Get In Touch</h2>
