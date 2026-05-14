@@ -86,6 +86,6 @@ export const mentors = [
     quote: 'I have seen Imam grow from a student to a capable culinarian. His plating skills and understanding of flavor profiles are well beyond his years.',
     name: 'Shamchul Haque',
     role: 'Exec Chef, TasteBud',
-    img: 'https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=200&auto=format&fit=crop',
+    img: 'https://ui-avatars.com/api/?name=Shamchul+Haquehttps://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=200&auto=format&fit=cropbackground=d97706https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=200&auto=format&fit=cropcolor=fffhttps://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=200&auto=format&fit=cropsize=200',
   },
 ]
