@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import emailjs from '@emailjs/browser'
-import { Mail, Phone, Send, CheckCircle, XCircle } from 'lucide-react'
+import { MapPin, Phone, Send, CheckCircle, XCircle, Clock } from 'lucide-react'
 import { siteConfig } from '../data/config'
 
 const FacebookIcon = () => (
@@ -52,6 +52,18 @@ export default function Contact() {
               I am currently available for apprenticeships, private dining events, and collaborations.
             </p>
             <div className="space-y-6">
+              <div className="flex items-center space-x-5 text-gray-300 p-4 bg-[#1f1f1f] rounded border border-transparent">
+                <MapPin className="text-brand-gold w-6 h-6 flex-shrink-0" />
+                <span className="font-sans">Dhaka, Bangladesh</span>
+              </div>
+              <div className="flex items-center space-x-5 text-gray-300 p-4 bg-[#1f1f1f] rounded border border-transparent">
+                <Phone className="text-brand-gold w-6 h-6 flex-shrink-0" />
+                <span className="font-sans">+880 1775 488063</span>
+              </div>
+              <div className="flex items-center space-x-5 text-green-400 p-4 bg-green-400/10 rounded border border-green-400/20">
+                <Clock className="w-6 h-6 flex-shrink-0" />
+                <span className="font-sans text-sm font-bold uppercase tracking-widest">Available for Work</span>
+              </div>
 
 
               <div className="flex space-x-4 pt-6">
