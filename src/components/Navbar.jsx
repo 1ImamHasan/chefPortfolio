@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
-const links = ['Home', 'About', 'Portfolio', 'Resume', 'Contact']
+const links = ['Home', 'About', 'Portfolio', 'Resume', 'Recipes', 'Contact']
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
