@@ -7,7 +7,7 @@ export default function Portfolio() {
 
   return (
     <section id="portfolio" className="py-16 md:py-24 bg-brand-dark">
-      <div className="container mx-auto px-66">
+      <div className="container mx-auto px-6">
         <div className="text-center mb-16" data-aos="zoom-in">
           <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-6">Culinary Creations</h2>
           <div className="h-0.5 w-0 bg-brand-gold mx-auto transition-all duration-700 group-hover:w-16 aos-animate:w-16"></div>
