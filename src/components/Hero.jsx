@@ -1,27 +1,39 @@
+import { useEffect, useRef } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { siteConfig } from '../data/config'
 
 export default function Hero() {
   const { name, tagline, heroVideo, heroImage } = siteConfig
+  const imgRef = useRef(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (imgRef.current) {
+        const scrollY = window.scrollY
+        imgRef.current.style.transform = `scale(1.1) translateY(${scrollY * 0.3}px)`
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        {/* Video Background */}
         <video
           autoPlay
           muted
           loop
           playsInline
+          ref={imgRef}
           className="w-full h-full object-cover opacity-30"
           poster={heroImage}
         >
           <source src={heroVideo} type="video/mp4" />
-          {/* Fallback image if video fails */}
           <img
             src={heroImage}
             alt="Fine Dining Atmosphere"
-            className="w-full h-full object-cover opacity-40 transform scale-110 transition-transform duration-[10000ms] ease-out animate-hero-zoom"
+            className="w-full h-full object-cover opacity-40"
           />
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-transparent"></div>
