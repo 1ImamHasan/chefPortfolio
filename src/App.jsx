@@ -12,6 +12,7 @@ const About = lazy(() => import('./components/About'))
 const Portfolio = lazy(() => import('./components/Portfolio'))
 const Resume = lazy(() => import('./components/Resume'))
 const Quote = lazy(() => import('./components/Quote'))
+const Recipes = lazy(() => import('./components/Recipes'))
 const Contact = lazy(() => import('./components/Contact'))
 const Footer = lazy(() => import('./components/Footer'))
 
@@ -36,6 +37,7 @@ function App() {
           <Portfolio />
           <Resume />
           <Quote />
+          <Recipes />
           <Contact />
           <Footer />
         </Suspense>

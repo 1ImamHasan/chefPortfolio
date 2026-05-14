@@ -97,3 +97,31 @@ export const mentors = [
     img: 'https://ui-avatars.com/api/?name=Shamchul+Haque&background=d97706&color=fff&size=200',
   },
 ]
+
+// ─── Recipes / Blog ───────────────────────────────────────────────────────────
+export const recipes = [
+  {
+    title: 'Classic Beef Bourguignon',
+    category: 'Modern French',
+    time: '3 hrs',
+    difficulty: 'Advanced',
+    image: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?q=80&w=800',
+    excerpt: 'A rich French braised beef stew slow-cooked in red wine with mushrooms and pearl onions.',
+  },
+  {
+    title: 'Saffron Risotto alla Milanese',
+    category: 'Italian',
+    time: '45 min',
+    difficulty: 'Intermediate',
+    image: 'https://images.unsplash.com/photo-1626805673863-3b256b3333b6?q=80&w=800',
+    excerpt: 'Creamy Arborio rice infused with saffron, finished with Parmigiano-Reggiano and butter.',
+  },
+  {
+    title: 'Dark Chocolate Fondant',
+    category: 'Pastry',
+    time: '30 min',
+    difficulty: 'Intermediate',
+    image: 'https://images.unsplash.com/photo-1559506974-7a81214baaf7?q=80&w=800',
+    excerpt: 'A perfectly molten chocolate dessert with a crisp exterior and liquid center.',
+  },
+]
