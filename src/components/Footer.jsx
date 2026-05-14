@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ArrowUp } from 'lucide-react'
+import { siteConfig } from '../data/config'
 
 export default function Footer() {
   const [visible, setVisible] = useState(false)
@@ -14,7 +15,7 @@ export default function Footer() {
     <>
       <div className="border-t border-gray-800 py-8 bg-[#151515] text-center">
         <p className="text-gray-600 text-sm font-sans tracking-wider">
-          &copy; {new Date().getFullYear()} Imam Hasan. All Rights Reserved.
+          &copy; {new Date().getFullYear()} {siteConfig.name}. All Rights Reserved.
         </p>
       </div>
 
