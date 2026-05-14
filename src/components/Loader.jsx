@@ -15,7 +15,7 @@ export default function Loader() {
   if (!visible) return null
 
   return (
-    <div className={`fixed inset-0 z-[200] bg-brand-dark flex flex-col items-center justify-center transition-opacity duration-600 ${
+    <div className={`fixed inset-0 z-[200] bg-brand-dark flex flex-col items-center justify-center transition-opacity duration-500 ${
       fadeOut ? 'opacity-0' : 'opacity-100'
     }`}>
       {/* Animated plate */}

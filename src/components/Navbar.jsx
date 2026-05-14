@@ -22,7 +22,7 @@ export default function Navbar() {
         : 'bg-transparent py-6 border-b border-transparent'
     }`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#hero" className="text-brand-gold font-sans font-bold text-2xl tracking-widest border-2 border-brand-gold p-2 hover:bg-brand-gold hover:text-white transition-colors">
+        <a href="#home" className="text-brand-gold font-sans font-bold text-2xl tracking-widest border-2 border-brand-gold p-2 hover:bg-brand-gold hover:text-white transition-colors">
           IH
         </a>
 
