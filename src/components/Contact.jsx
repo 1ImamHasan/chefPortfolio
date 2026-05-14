@@ -1,4 +1,5 @@
 import { Mail, Phone } from 'lucide-react'
+import { siteConfig } from '../data/config'
 
 const FacebookIcon = () => (
   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -19,6 +20,8 @@ const InstagramIcon = () => (
 )
 
 export default function Contact() {
+  const { email, phone, whatsapp, social, formspree } = siteConfig
+
   return (
     <section id="contact" className="py-24 bg-[#151515]">
       <div className="container mx-auto px-6">
@@ -30,26 +33,29 @@ export default function Contact() {
               I am currently available for apprenticeships, private dining events, and collaborations.
             </p>
             <div className="space-y-6">
-              <a href="mailto:mdimamhasanihr@gmail.com"
+              <a href={`mailto:${email}`}
                 className="flex items-center space-x-5 text-gray-300 hover:text-brand-gold transition-colors p-4 bg-[#1f1f1f] rounded border border-transparent hover:border-brand-gold/30">
                 <Mail className="text-brand-gold w-6 h-6" />
-                <span className="font-sans">mdimamhasanihr@gmail.com</span>
+                <span className="font-sans">{email}</span>
               </a>
-              <a href="https://wa.me/8801775488063"
+              <a href={whatsapp} target="_blank" rel="noopener noreferrer"
                 className="flex items-center space-x-5 text-gray-300 hover:text-brand-gold transition-colors p-4 bg-[#1f1f1f] rounded border border-transparent hover:border-brand-gold/30">
                 <Phone className="text-green-500 w-6 h-6" />
-                <span className="font-sans">+880 1775 488063 (WhatsApp)</span>
+                <span className="font-sans">{phone} (WhatsApp)</span>
               </a>
               <div className="flex space-x-4 pt-6">
-                <a href="#" aria-label="Facebook"
+                <a href={social.facebook} target="_blank" rel="noopener noreferrer"
+                  aria-label="Facebook"
                   className="w-12 h-12 border border-gray-700 flex items-center justify-center rounded-full hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all text-gray-400">
                   <FacebookIcon />
                 </a>
-                <a href="#" aria-label="GitHub"
+                <a href={social.github} target="_blank" rel="noopener noreferrer"
+                  aria-label="GitHub"
                   className="w-12 h-12 border border-gray-700 flex items-center justify-center rounded-full hover:bg-gray-700 hover:text-white transition-all text-gray-400">
                   <GithubIcon />
                 </a>
-                <a href="#" aria-label="Instagram"
+                <a href={social.instagram} target="_blank" rel="noopener noreferrer"
+                  aria-label="Instagram"
                   className="w-12 h-12 border border-gray-700 flex items-center justify-center rounded-full hover:bg-pink-600 hover:border-pink-600 hover:text-white transition-all text-gray-400">
                   <InstagramIcon />
                 </a>
@@ -58,7 +64,7 @@ export default function Contact() {
           </div>
 
           <div className="bg-[#1f1f1f] p-10 rounded-lg border border-gray-800 shadow-2xl" data-aos="fade-left">
-            <form action="https://formspree.io/f/mqazqozk" method="POST" className="space-y-6">
+            <form action={formspree} method="POST" className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Name</label>
