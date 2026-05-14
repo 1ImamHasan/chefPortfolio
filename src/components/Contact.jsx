@@ -47,7 +47,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-6xl mx-auto">
 
           <div data-aos="fade-right" data-aos-duration="800">
-            <h2 className="text-4xl font-sans font-bold text-white mb-6">Get In Touch</h2>
+            <h2 className="text-3xl md:text-4xl font-sans font-bold text-white mb-6">Get In Touch</h2>
             <p className="text-gray-400 mb-10 text-lg leading-relaxed">
               I am currently available for apprenticeships, private dining events, and collaborations.
             </p>
