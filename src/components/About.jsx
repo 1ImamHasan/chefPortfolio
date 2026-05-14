@@ -8,6 +8,14 @@ const skills = [
   { icon: <ChefHat />, title: 'Menu Planning', desc: 'Costing & seasonality' },
 ]
 
+const progressSkills = [
+  { name: 'Knife Skills', level: 85 },
+  { name: 'Continental Cuisine', level: 80 },
+  { name: 'Pastry & Baking', level: 70 },
+  { name: 'Plating & Presentation', level: 88 },
+  { name: 'Food Safety (HACCP)', level: 95 },
+]
+
 export default function About() {
   const { name } = siteConfig
 
@@ -31,8 +39,8 @@ export default function About() {
               The Chef's Table
             </h2>
             <div className="h-0.5 w-16 bg-brand-gold mb-8 transition-all duration-700"></div>
-            <p className="text-gray-400 leading-relaxed mb-6 text-lg font-light">
-              Hello, I'm{' '}
+            <p className="text-gray-400 leading-relaxed mb-8 text-lg font-light">
+              Hello, I'm{" "}
               <span className="text-brand-gold font-bold">{name}</span>. As a
               dedicated Trainee Chef, I focus on the intersection of classic
               tradition and modern innovation. My journey is defined by a
@@ -40,6 +48,25 @@ export default function About() {
               art of plating.
             </p>
 
+            {/* Skills Progress Bars */}
+            <div className="space-y-4 mb-8">
+              {progressSkills.map((skill) => (
+                <div key={skill.name}>
+                  <div className="flex justify-between mb-1">
+                    <span className="text-xs font-sans font-bold uppercase tracking-widest text-gray-400">{skill.name}</span>
+                    <span className="text-xs font-bold text-brand-gold">{skill.level}%</span>
+                  </div>
+                  <div className="w-full bg-brand-dark rounded-full h-1.5">
+                    <div
+                      className="bg-brand-gold h-1.5 rounded-full transition-all duration-1000 ease-out"
+                      style={{ width: `${skill.level}%` }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Skill Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
               {skills.map((skill) => (
                 <div key={skill.title}
