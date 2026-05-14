@@ -1,3 +1,4 @@
+// ─── Site Configuration ───────────────────────────────────────────────────────
 export const siteConfig = {
   name: 'Imam Hasan',
   title: 'Trainee Chef Portfolio',
@@ -13,6 +14,7 @@ export const siteConfig = {
   },
 }
 
+// ─── Portfolio Dishes ─────────────────────────────────────────────────────────
 export const dishes = [
   {
     src: 'https://images.unsplash.com/photo-1676300185292-e238e43b3d5d?q=80&w=800',
@@ -52,6 +54,7 @@ export const dishes = [
   },
 ]
 
+// ─── Career Timeline ──────────────────────────────────────────────────────────
 export const timeline = [
   {
     date: 'Jan 2026 - Present',
@@ -69,6 +72,7 @@ export const timeline = [
   },
 ]
 
+// ─── Certifications ───────────────────────────────────────────────────────────
 export const certifications = [
   'Food Safety & Hygiene Level 2',
   'Basic First Aid & Fire Safety',
@@ -76,6 +80,7 @@ export const certifications = [
   'Professional Chef Course Level-1',
 ]
 
+// ─── Mentors & References ─────────────────────────────────────────────────────
 export const mentors = [
   {
     quote: 'Imam possesses a rare combination of creativity and discipline. His ability to adapt quickly in a high-pressure kitchen environment is impressive.',
@@ -87,6 +92,6 @@ export const mentors = [
     quote: 'I have seen Imam grow from a student to a capable culinarian. His plating skills and understanding of flavor profiles are well beyond his years.',
     name: 'Shamchul Haque',
     role: 'Exec Chef, TasteBud',
-    img: 'https://ui-avatars.com/api/?name=Shamchul+Haquehttps://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=200&auto=format&fit=cropbackground=d97706https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=200&auto=format&fit=cropcolor=fffhttps://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=200&auto=format&fit=cropsize=200',
+    img: 'https://ui-avatars.com/api/?name=Shamchul+Haque&background=d97706&color=fff&size=200',
   },
 ]
