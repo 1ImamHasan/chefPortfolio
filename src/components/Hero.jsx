@@ -2,7 +2,7 @@ import { ChevronDown } from 'lucide-react'
 import { siteConfig } from '../data/config'
 
 export default function Hero() {
-  const { name } = siteConfig
+  const { name, tagline, heroVideo, heroImage } = siteConfig
 
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -14,12 +14,12 @@ export default function Hero() {
           loop
           playsInline
           className="w-full h-full object-cover opacity-30"
-          poster="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop"
+          poster={heroImage}
         >
-          <source src="https://cdn.coverr.co/videos/coverr-a-chef-cooking-in-a-restaurant-kitchen-1665/1080p.mp4" type="video/mp4" />
+          <source src={heroVideo} type="video/mp4" />
           {/* Fallback image if video fails */}
           <img
-            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop"
+            src={heroImage}
             alt="Fine Dining Atmosphere"
             className="w-full h-full object-cover opacity-40 transform scale-110 transition-transform duration-[10000ms] ease-out animate-hero-zoom"
           />
@@ -36,7 +36,7 @@ export default function Hero() {
         </h1>
         <div className="h-1 w-24 bg-brand-gold mx-auto mb-8 rounded-full"></div>
         <p className="text-lg md:text-3xl text-gray-300 font-serif italic mb-12 font-light">
-          "Where Technique Meets Taste."
+          "{tagline}"
         </p>
         <a href="#portfolio"
           className="group relative px-8 py-4 bg-transparent border border-brand-gold text-brand-gold font-sans uppercase tracking-widest text-sm font-bold overflow-hidden inline-block transition-all hover:text-white">

@@ -7,6 +7,8 @@ export const siteConfig = {
   phone: '+880 1775 488063',
   location: 'Dhaka, Bangladesh',
   whatsapp: 'https://wa.me/8801775488063',
+  heroVideo: 'https://cdn.coverr.co/videos/coverr-a-chef-cooking-in-a-restaurant-kitchen-1665/1080p.mp4',
+  heroImage: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop',
   social: {
     facebook: 'https://www.facebook.com/imam.hasan.281291',
     instagram: 'https://www.instagram.com/mdimamhasanihr?igsh=b3RhY2s5dHQ2dG9i',
