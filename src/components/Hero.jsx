@@ -7,11 +7,23 @@ export default function Hero() {
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop"
-          alt="Fine Dining Atmosphere"
-          className="w-full h-full object-cover opacity-40 transform scale-110 transition-transform duration-[10000ms] ease-out animate-hero-zoom"
-        />
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover opacity-30"
+          poster="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop"
+        >
+          <source src="https://cdn.coverr.co/videos/coverr-a-chef-cooking-in-a-restaurant-kitchen-1665/1080p.mp4" type="video/mp4" />
+          {/* Fallback image if video fails */}
+          <img
+            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop"
+            alt="Fine Dining Atmosphere"
+            className="w-full h-full object-cover opacity-40 transform scale-110 transition-transform duration-[10000ms] ease-out animate-hero-zoom"
+          />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-transparent"></div>
       </div>
 
