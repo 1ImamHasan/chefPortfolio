@@ -2,8 +2,13 @@ import { useState } from 'react'
 import { ZoomIn, X } from 'lucide-react'
 import { dishes } from '../data/config'
 
+const categories = ['All', ...new Set(dishes.map(d => d.category))]
+
 export default function Portfolio() {
   const [modal, setModal] = useState(null)
+  const [active, setActive] = useState('All')
+
+  const filtered = active === 'All' ? dishes : dishes.filter(d => d.category === active)
 
   return (
     <section id="portfolio" className="py-16 md:py-24 bg-brand-dark">
@@ -14,13 +19,30 @@ export default function Portfolio() {
           <p className="mt-4 text-gray-400 italic font-serif">A selection of my recent work. Click to enlarge.</p>
         </div>
 
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10" data-aos="fade-up">
+          {categories.map(cat => (
+            <button
+              key={cat}
+              onClick={() => setActive(cat)}
+              className={`px-5 py-2 text-xs font-sans font-bold uppercase tracking-widest border transition-all duration-300 rounded-sm ${
+                active === cat
+                  ? 'bg-brand-gold border-brand-gold text-white'
+                  : 'border-gray-600 text-gray-400 hover:border-brand-gold hover:text-brand-gold'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {dishes.map((dish, i) => (
+          {filtered.map((dish, i) => (
             <div
-              key={i}
+              key={dish.title}
               className="group relative h-80 overflow-hidden cursor-pointer bg-black"
               data-aos="fade-up"
-              data-aos-delay={((i % 3) + 1) * 100}
+              data-aos-delay={(i % 3 + 1) * 100}
               onClick={() => setModal(dish)}
             >
               <img loading="lazy" src={dish.src} alt={dish.alt}
