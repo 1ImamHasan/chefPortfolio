@@ -42,7 +42,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 bg-[#151515]">
+    <section id="contact" className="py-16 md:py-24 bg-[#151515]">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 max-w-6xl mx-auto">
 
@@ -83,7 +83,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="bg-[#1f1f1f] p-10 rounded-lg border border-gray-800 shadow-2xl" data-aos="fade-left" data-aos-duration="800">
+          <div className="bg-[#1f1f1f] p-6 md:p-10 rounded-lg border border-gray-800 shadow-2xl" data-aos="fade-left" data-aos-duration="800">
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>

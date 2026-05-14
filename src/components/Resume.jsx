@@ -5,7 +5,7 @@ import { timeline, certifications, mentors } from '../data/config'
 
 export default function Resume() {
   return (
-    <section id="resume" className="py-24 bg-[#222]">
+    <section id="resume" className="py-16 md:py-24 bg-[#222]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16" data-aos="zoom-in">
           <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-6">Career & Credentials</h2>

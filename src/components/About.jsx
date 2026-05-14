@@ -12,7 +12,7 @@ export default function About() {
   const { name } = siteConfig
 
   return (
-    <section id="about" className="py-24 bg-[#1f1f1f]">
+    <section id="about" className="py-16 md:py-24 bg-[#1f1f1f]">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
 
