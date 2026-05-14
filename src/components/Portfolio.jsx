@@ -1,14 +1,6 @@
 import { useState } from 'react'
 import { ZoomIn, X } from 'lucide-react'
-
-const dishes = [
-  { src: 'https://images.unsplash.com/photo-1676300185292-e238e43b3d5d?q=80&w=800', alt: 'Pan-Seared Duck Breast', category: 'Modern French', title: 'Pan-Seared Duck' },
-  { src: 'https://images.unsplash.com/photo-1559506974-7a81214baaf7?q=80&w=800', alt: 'Dark Chocolate Tart', category: 'Pastry', title: 'Dark Chocolate Tart' },
-  { src: 'https://images.unsplash.com/photo-1626805673863-3b256b3333b6?q=80&w=800', alt: 'Saffron Risotto', category: 'Italian', title: 'Saffron Risotto' },
-  { src: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800', alt: 'Herb Crusted Lamb', category: 'Main Course', title: 'Herb Crusted Lamb' },
-  { src: '/recentDishOfMeImages/LbsterParagon.jpg', alt: 'Lobster Paragon', category: 'Seafood', title: 'Lobster Paragon' },
-  { src: 'https://images.unsplash.com/photo-1569246294372-ed319c674f14?q=80&w=800', alt: 'Wild Mushroom Foam', category: 'Molecular', title: 'Wild Mushroom Foam' },
-]
+import { dishes } from '../data/config'
 
 export default function Portfolio() {
   const [modal, setModal] = useState(null)

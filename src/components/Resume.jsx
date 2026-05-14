@@ -1,28 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay } from 'swiper/modules'
 import { Award, FileDown, Quote } from 'lucide-react'
-
-const mentors = [
-  {
-    quote: 'Imam possesses a rare combination of creativity and discipline. His ability to adapt quickly in a high-pressure kitchen environment is impressive.',
-    name: 'Daniel C Gomes',
-    role: 'Exec Chef, ICI',
-    img: '/mentorsImages/danielCgomes.png',
-  },
-  {
-    quote: 'I have seen Imam grow from a student to a capable culinarian. His plating skills and understanding of flavor profiles are well beyond his years.',
-    name: 'Shamchul Haque',
-    role: 'Exec Chef, TasteBud',
-    img: 'https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=200&auto=format&fit=crop',
-  },
-]
-
-const certs = [
-  'Food Safety & Hygiene Level 2',
-  'Basic First Aid & Fire Safety',
-  'Knife Skills Masterclass Workshop',
-  'Professional Chef Course Level-1',
-]
+import { timeline, certifications, mentors } from '../data/config'
 
 export default function Resume() {
   return (
@@ -42,28 +21,26 @@ export default function Resume() {
               </a>
             </div>
 
-            <div className="border-l-2 border-brand-gold/30 pl-8 pb-10 relative">
-              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-gold shadow-[0_0_10px_rgba(217,119,6,0.5)]"></div>
-              <span className="text-xs font-sans tracking-widest text-gray-500 uppercase font-bold">Jan 2026 - Present</span>
-              <h4 className="text-xl text-white font-bold mt-2">Trainee Chef</h4>
-              <p className="text-brand-gold text-sm mb-3 font-serif italic">Available Opportunities</p>
-              <p className="text-gray-400 text-sm leading-relaxed">Available for apprenticeships, private dining events, and catering services.</p>
-            </div>
-
-            <div className="border-l-2 border-brand-gold/30 pl-8 pb-4 relative">
-              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#2C2C2C] border-2 border-brand-gold"></div>
-              <span className="text-xs font-sans tracking-widest text-gray-500 uppercase font-bold">OCT 2025 - Dec 2025</span>
-              <h4 className="text-xl text-white font-bold mt-2">Professional Chef Course Level-1</h4>
-              <p className="text-brand-gold text-sm mb-3 font-serif italic">International Culinary Institute (ICI)</p>
-              <p className="text-gray-400 text-sm leading-relaxed">Trained with distinction. Specialized in continental cuisine and food safety management (HACCP Level 1).</p>
-            </div>
+            {timeline.map((item, i) => (
+              <div key={i} className="border-l-2 border-brand-gold/30 pl-8 pb-10 relative">
+                <div className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full ${
+                  item.active
+                    ? 'bg-brand-gold shadow-[0_0_10px_rgba(217,119,6,0.5)]'
+                    : 'bg-[#2C2C2C] border-2 border-brand-gold'
+                }`}></div>
+                <span className="text-xs font-sans tracking-widest text-gray-500 uppercase font-bold">{item.date}</span>
+                <h4 className="text-xl text-white font-bold mt-2">{item.title}</h4>
+                <p className="text-brand-gold text-sm mb-3 font-serif italic">{item.place}</p>
+                <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
 
             <div className="bg-brand-dark p-6 border border-gray-800 mt-8 rounded shadow-lg">
               <h4 className="flex items-center gap-2 text-white font-bold uppercase text-xs tracking-widest mb-4">
                 <Award className="text-brand-gold w-5 h-5" /> Certifications
               </h4>
               <ul className="space-y-3 text-gray-400 text-sm">
-                {certs.map((c, i) => (
+                {certifications.map((c, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <span className="text-brand-gold mt-1 text-xs">●</span> {c}
                   </li>
