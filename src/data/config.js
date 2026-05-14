@@ -10,7 +10,6 @@ export const siteConfig = {
     instagram: 'https://www.instagram.com/mdimamhasanihr?igsh=b3RhY2s5dHQ2dG9i',
     github: 'https://github.com/1ImamHasan',
   },
-  formspree: 'https://formspree.io/f/mqazqozk',
 }
 
 export const dishes = [
