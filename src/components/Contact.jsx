@@ -52,16 +52,8 @@ export default function Contact() {
               I am currently available for apprenticeships, private dining events, and collaborations.
             </p>
             <div className="space-y-6">
-              <a href={`mailto:${email}`}
-                className="flex items-center space-x-5 text-gray-300 hover:text-brand-gold transition-colors p-4 bg-[#1f1f1f] rounded border border-transparent hover:border-brand-gold/30">
-                <Mail className="text-brand-gold w-6 h-6" />
-                <span className="font-sans">{email}</span>
-              </a>
-              <a href={whatsapp} target="_blank" rel="noopener noreferrer"
-                className="flex items-center space-x-5 text-gray-300 hover:text-brand-gold transition-colors p-4 bg-[#1f1f1f] rounded border border-transparent hover:border-brand-gold/30">
-                <Phone className="text-green-500 w-6 h-6" />
-                <span className="font-sans">{phone} (WhatsApp)</span>
-              </a>
+
+
               <div className="flex space-x-4 pt-6">
                 <a href={social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"
                   className="w-12 h-12 border border-gray-700 flex items-center justify-center rounded-full hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all text-gray-400">
