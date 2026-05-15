@@ -69,7 +69,8 @@ export const timeline = [
     date: 'OCT 2025 - Dec 2025',
     title: 'Professional Chef Course Level-1',
     place: 'International Culinary Institute (ICI)',
-    desc: 'Trained with distinction. Specialized in continental cuisine and food safety management (HACCP Level 1).',
+    // TODO: আসল মার্ক ও গ্রেড বসাও — যেমন: Grade: A+, Mark: 92/100
+    desc: 'Completed with distinction. Specialized in continental cuisine and food safety management (HACCP Level 1). Grade: — | Mark: —/100',
     active: false,
   },
 ]
@@ -79,7 +80,8 @@ export const certifications = [
   'Food Safety & Hygiene Level 2',
   'Basic First Aid & Fire Safety',
   'Knife Skills Masterclass Workshop',
-  'Professional Chef Course Level-1',
+  // TODO: Certificate পেলে গ্রেড/মার্ক যোগ করো — যেমন: 'Professional Chef Course Level-1 — ICI (Grade: A+)'
+  'Professional Chef Course Level-1 — ICI (Grade: — | Mark: —/100)',
 ]
 
 // ─── Mentors & References ─────────────────────────────────────────────────────
