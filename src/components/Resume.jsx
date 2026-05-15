@@ -1,24 +1,26 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay } from 'swiper/modules'
-import { Award, FileDown, Quote } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Award, Quote } from 'lucide-react'
 import { timeline, certifications, mentors } from '../data/config'
 
 export default function Resume() {
   return (
     <section id="resume" className="py-16 md:py-24 bg-[#222]">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16" data-aos="zoom-in">
+        <motion.div className="text-center mb-16"
+          initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }} transition={{ duration: 0.6 }}>
           <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-6">Career & Credentials</h2>
-          <div className="h-0.5 w-0 bg-brand-gold mx-auto transition-all duration-700 group-hover:w-16 aos-animate:w-16"></div>
-        </div>
+          <div className="h-0.5 w-16 bg-brand-gold mx-auto"></div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-          <div data-aos="fade-right">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <div className="flex items-center justify-between mb-10">
               <h3 className="text-xl md:text-2xl font-serif italic text-white">Professional Journey</h3>
-              {/* <a href="#" className="flex items-center gap-2 text-brand-gold border border-brand-gold px-4 py-2 text-xs uppercase tracking-widest hover:bg-brand-gold hover:text-white transition-all font-bold">
-  <FileDown className="w-4 h-4" /> Download CV
-</a> */}
             </div>
 
             {timeline.map((item, i) => (
@@ -47,9 +49,11 @@ export default function Resume() {
                 ))}
               </ul>
             </div>
-          </div>
+          </motion.div>
 
-          <div data-aos="fade-left">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <h3 className="text-xl md:text-2xl font-serif italic text-white mb-10">References & Mentors</h3>
             <Swiper
               modules={[Pagination, Autoplay]}
@@ -79,7 +83,7 @@ export default function Resume() {
                 </SwiperSlide>
               ))}
             </Swiper>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

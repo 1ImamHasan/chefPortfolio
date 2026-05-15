@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Clock, ChefHat } from 'lucide-react'
 import { recipes } from '../data/config'
 
@@ -11,7 +12,9 @@ export default function Recipes() {
   return (
     <section id="recipes" className="py-16 md:py-24 bg-[#1a1a1a]">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16" data-aos="zoom-in">
+        <motion.div className="text-center mb-16"
+          initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }} transition={{ duration: 0.6 }}>
           <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-6">
             Recipes & Notes
           </h2>
@@ -19,14 +22,16 @@ export default function Recipes() {
           <p className="mt-4 text-gray-400 italic font-serif">
             Techniques and recipes from my culinary journey.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {recipes.map((recipe, i) => (
-            <div
+            <motion.div
               key={i}
-              data-aos="fade-up"
-              data-aos-delay={(i % 3 + 1) * 100}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
               className="bg-[#1f1f1f] border border-gray-800 rounded-lg overflow-hidden group hover:border-brand-gold/40 transition-all duration-300 hover:-translate-y-1"
             >
               <div className="relative h-52 overflow-hidden">
@@ -62,7 +67,7 @@ export default function Recipes() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
