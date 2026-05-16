@@ -5,7 +5,6 @@ import 'swiper/css/pagination'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Loader from './components/Loader'
-import CustomCursor from './components/CustomCursor'
 
 const About    = lazy(() => import('./components/About'))
 const Portfolio = lazy(() => import('./components/Portfolio'))
@@ -18,7 +17,6 @@ const Footer   = lazy(() => import('./components/Footer'))
 function App() {
   return (
     <>
-      <CustomCursor />
       <Loader />
       <div className="bg-brand-dark text-gray-300 antialiased overflow-x-hidden font-sans selection:bg-brand-gold selection:text-white">
         <Navbar />
