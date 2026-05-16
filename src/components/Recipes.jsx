@@ -15,55 +15,37 @@ export default function Recipes() {
         <motion.div className="text-center mb-16"
           initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }} transition={{ duration: 0.6 }}>
-          <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-6">
-            Recipes & Notes
-          </h2>
-          <div className="h-0.5 w-16 bg-brand-gold mx-auto"></div>
-          <p className="mt-4 text-gray-400 italic font-serif">
-            Techniques and recipes from my culinary journey.
-          </p>
+          <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-6">Recipes & Notes</h2>
+          <div className="h-0.5 w-16 bg-brand-gold mx-auto" />
+          <p className="mt-4 text-gray-400 italic font-serif">Techniques and recipes from my culinary journey.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {recipes.map((recipe, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
-              className="bg-[#1f1f1f] border border-gray-800 rounded-lg overflow-hidden group hover:border-brand-gold/40 transition-all duration-300 hover:-translate-y-1"
-            >
+            <motion.div key={recipe.id}
+              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
+              className="bg-[#1f1f1f] border border-gray-800 rounded-lg overflow-hidden group hover:border-brand-gold/40 transition-all duration-300 hover:-translate-y-1">
               <div className="relative h-52 overflow-hidden">
-                <img
-                  loading="lazy"
-                  src={recipe.image}
-                  alt={recipe.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1f1f1f] to-transparent"></div>
+                <img loading="lazy" src={recipe.image} alt={recipe.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1f1f1f] to-transparent" />
                 <span className="absolute top-4 left-4 text-[10px] font-sans font-bold uppercase tracking-widest text-white bg-brand-gold px-3 py-1 rounded-sm">
                   {recipe.category}
                 </span>
               </div>
-
               <div className="p-6">
                 <h3 className="text-white font-sans font-bold text-lg mb-3 group-hover:text-brand-gold transition-colors">
                   {recipe.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                  {recipe.excerpt}
-                </p>
+                <p className="text-gray-400 text-sm leading-relaxed mb-4">{recipe.excerpt}</p>
                 <div className="flex items-center justify-between border-t border-gray-800 pt-4">
                   <div className="flex items-center gap-2 text-gray-500 text-xs">
-                    <Clock className="w-3 h-3" />
-                    <span>{recipe.time}</span>
+                    <Clock className="w-3 h-3" /><span>{recipe.time}</span>
                   </div>
                   <div className="flex items-center gap-2 text-xs">
                     <ChefHat className="w-3 h-3 text-gray-500" />
-                    <span className={difficultyColor[recipe.difficulty] || 'text-gray-400'}>
-                      {recipe.difficulty}
-                    </span>
+                    <span className={difficultyColor[recipe.difficulty] || 'text-gray-400'}>{recipe.difficulty}</span>
                   </div>
                 </div>
               </div>

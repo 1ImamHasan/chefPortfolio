@@ -1,14 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ZoomIn, X } from 'lucide-react'
-import { dishes } from '../data/config'
-
-const categories = ['All', ...new Set(dishes.map(d => d.category))]
+import { dishes, categories } from '../data/config'
 
 export default function Portfolio() {
   const [modal, setModal] = useState(null)
   const [active, setActive] = useState('All')
   const filtered = active === 'All' ? dishes : dishes.filter(d => d.category === active)
+
+  useEffect(() => {
+    const onKey = (e) => e.key === 'Escape' && setModal(null)
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = modal ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [modal])
 
   return (
     <section id="portfolio" className="py-16 md:py-24 bg-brand-dark">
@@ -17,7 +26,7 @@ export default function Portfolio() {
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.6 }}>
           <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-4">Culinary Creations</h2>
-          <div className="h-0.5 w-16 bg-brand-gold mx-auto mt-2 mb-4"></div>
+          <div className="h-0.5 w-16 bg-brand-gold mx-auto mt-2 mb-4" />
           <p className="text-gray-400 italic font-serif">A selection of my recent work. Click to enlarge.</p>
         </motion.div>
 
@@ -35,7 +44,7 @@ export default function Portfolio() {
         <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3" layout>
           <AnimatePresence mode="popLayout">
             {filtered.map((dish, i) => (
-              <motion.div key={dish.title} layout
+              <motion.div key={dish.id} layout
                 initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.4, delay: i * 0.05 }}
                 className="group relative h-80 overflow-hidden cursor-pointer bg-black"
@@ -59,11 +68,12 @@ export default function Portfolio() {
         {modal && (
           <motion.div className="fixed inset-0 z-[100] bg-black/95 flex justify-center items-center backdrop-blur-sm"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            onClick={() => setModal(null)}>
-            <button className="absolute top-6 right-6 text-black hover:text-white p-2 bg-brand-gold hover:bg-amber-700 rounded-full transition-all duration-300"
-  onClick={() => setModal(null)}>
-  <X className="w-8 h-8" />
-</button>
+            onClick={() => setModal(null)}
+            role="dialog" aria-modal="true" aria-label={modal.alt}>
+            <button className="absolute top-6 right-6 text-white hover:text-gray-200 p-2 bg-brand-gold hover:bg-amber-700 rounded-full transition-all duration-300"
+              onClick={() => setModal(null)} aria-label="Close modal">
+              <X className="w-8 h-8" />
+            </button>
             <motion.img src={modal.src} alt={modal.alt}
               className="max-h-[85vh] max-w-[90vw] object-contain shadow-2xl border border-gray-800 rounded-sm select-none"
               initial={{ scale: 0.85, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
