@@ -7,7 +7,7 @@ export const siteConfig = {
   email: 'mdimamhasanihr@gmail.com',
   phone: '+880 1775 488063',
   location: 'Dhaka, Bangladesh',
-  whatsapp: 'https://wa.me/8801775488063',
+  whatsapp: 'https://wa.me/8801775488063?text=Hi%20Imam%2C%20I%27d%20love%20to%20connect!',
   heroVideo: 'https://cdn.coverr.co/videos/coverr-a-chef-cooking-in-a-restaurant-kitchen-1665/1080p.mp4',
   heroImage: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1920&auto=format&fit=crop',
   social: {
