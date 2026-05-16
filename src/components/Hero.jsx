@@ -5,7 +5,7 @@ export default function Hero() {
   const { name, tagline, heroVideo, heroImage } = siteConfig
 
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '100svh' }}>
       <div className="absolute inset-0 z-0">
         <div className="w-full h-full">
           <video
@@ -37,11 +37,11 @@ export default function Hero() {
         </a>
       </div>
 
-      <div className="absolute bottom-8 w-full flex flex-col items-center gap-2 animate-bounce">
+      <div className="absolute bottom-6 w-full flex flex-col items-center gap-2 animate-bounce">
         <a href="#about" className="text-gray-500 hover:text-white transition-colors">
           <ChevronDown className="w-8 h-8" />
         </a>
-        <span className="text-gray-500 text-[10px] tracking-[0.3em] uppercase font-sans">Scroll to explore</span>
+        <span className="text-gray-400 text-xs tracking-widest uppercase font-sans">Scroll to explore</span>
       </div>
     </section>
   )
