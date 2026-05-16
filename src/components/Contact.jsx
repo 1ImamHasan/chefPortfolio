@@ -44,6 +44,8 @@ export default function Contact() {
     }
   }
 
+  const isLoading = status === 'loading'
+
   return (
     <section id="contact" className="py-16 md:py-24 bg-[#151515]">
       <div className="container mx-auto px-6">
@@ -92,19 +94,24 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Name</label>
-                  <input type="text" name="name" required placeholder="John Doe"
-                    className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm" />
+                  <input type="text" name="name" required placeholder="John Doe" disabled={isLoading}
+                    className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm disabled:opacity-50 disabled:cursor-not-allowed" />
                 </div>
                 <div>
                   <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Email</label>
-                  <input type="email" name="email" required placeholder="john@example.com"
-                    className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm" />
+                  <input type="email" name="email" required placeholder="john@example.com" disabled={isLoading}
+                    className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm disabled:opacity-50 disabled:cursor-not-allowed" />
                 </div>
               </div>
               <div>
+                <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Subject</label>
+                <input type="text" name="subject" required placeholder="Collaboration / Apprenticeship" disabled={isLoading}
+                  className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm disabled:opacity-50 disabled:cursor-not-allowed" />
+              </div>
+              <div>
                 <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Message</label>
-                <textarea name="message" rows="4" required placeholder="How can I help you?"
-                  className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm"></textarea>
+                <textarea name="message" rows="4" required placeholder="How can I help you?" disabled={isLoading}
+                  className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm disabled:opacity-50 disabled:cursor-not-allowed" />
               </div>
               {status === 'success' && (
                 <div className="flex items-center gap-3 text-green-400 bg-green-400/10 p-4 rounded border border-green-400/20">
@@ -118,12 +125,12 @@ export default function Contact() {
                   <span className="text-sm">Something went wrong. Please try again.</span>
                 </div>
               )}
-              <button type="submit" disabled={status === 'loading'}
+              <button type="submit" disabled={isLoading}
                 className="w-full bg-brand-gold text-white font-sans font-bold uppercase tracking-widest py-4 hover:bg-amber-600 hover:shadow-[0_0_20px_rgba(217,119,6,0.4)] transition-all text-xs rounded-sm shadow-lg flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed">
-                {status === 'loading' ? (
-                  <><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>Sending...</>
+                {isLoading ? (
+                  <><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />Sending...</>
                 ) : (
-                  <><Send className="w-4 h-4" /> Send Message</>
+                  <><Send className="w-4 h-4" />Send Message</>
                 )}
               </button>
             </form>

@@ -10,13 +10,16 @@ const WhatsAppIcon = () => (
 
 export default function Footer() {
   const [visible, setVisible] = useState(false)
-  const [hovered, setHovered] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 400)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  const floatClass = visible
+    ? 'opacity-100 translate-y-0'
+    : 'opacity-0 translate-y-10 pointer-events-none'
 
   return (
     <>
@@ -26,52 +29,28 @@ export default function Footer() {
         </p>
       </div>
 
-      {/* WhatsApp Button */}
-      <div className={`fixed bottom-36 md:bottom-24 right-6 z-40 transition-all duration-300 ${
-        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
-      }`}>
+      <div className={`fixed bottom-36 md:bottom-24 right-6 z-40 transition-all duration-300 ${floatClass}`}>
         <div className="relative">
-          {/* Online dot */}
-          <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-[#151515] z-10 animate-pulse"></span>
-
+          <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-[#151515] z-10 animate-pulse" />
           <a
             href={siteConfig.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="WhatsApp"
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            className="flex items-center gap-0 bg-green-500 text-white rounded-full shadow-2xl overflow-hidden hover:bg-green-600 transition-all duration-300"
-            style={{
-              width: hovered ? '160px' : '56px',
-              height: '56px',
-              transition: 'width 0.3s ease, background-color 0.3s ease',
-              animation: 'whatsappPulse 3s ease-in-out infinite',
-              paddingLeft: '16px',
-              paddingRight: '16px',
-            }}
+            aria-label="Chat on WhatsApp"
+            className="group flex items-center gap-0 bg-green-500 text-white rounded-full shadow-2xl overflow-hidden hover:bg-green-600 transition-all duration-300 h-14 px-4 w-14 hover:w-40"
+            style={{ animation: 'whatsappPulse 3s ease-in-out infinite' }}
           >
             <WhatsAppIcon />
-            <span className="text-sm font-sans font-bold whitespace-nowrap overflow-hidden transition-all duration-300"
-              style={{
-                maxWidth: hovered ? '100px' : '0px',
-                opacity: hovered ? 1 : 0,
-                marginLeft: hovered ? '10px' : '0px',
-                transition: 'max-width 0.3s ease, opacity 0.2s ease, margin 0.3s ease',
-              }}
-            >
+            <span className="max-w-0 group-hover:max-w-xs opacity-0 group-hover:opacity-100 whitespace-nowrap text-sm font-sans font-bold overflow-hidden transition-all duration-300 ml-0 group-hover:ml-2">
               Chat with me
             </span>
           </a>
         </div>
       </div>
 
-      {/* Back to top */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={`fixed bottom-20 md:bottom-8 right-6 p-4 bg-brand-gold text-white rounded-full shadow-2xl z-40 hover:bg-amber-700 transition-all duration-300 ${
-          visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
-        }`}
+        className={`fixed bottom-20 md:bottom-8 right-6 p-4 bg-brand-gold text-white rounded-full shadow-2xl z-40 hover:bg-amber-700 transition-all duration-300 ${floatClass}`}
         aria-label="Back to top"
       >
         <ArrowUp className="w-6 h-6" />

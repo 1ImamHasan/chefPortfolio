@@ -10,21 +10,19 @@
 .swiper-pagination-bullet {
   background-color: #4b5563;
 }
-.no-scroll {
-  overflow: hidden;
-}
+
 *:focus-visible {
   outline: 2px solid #d97706;
   outline-offset: 2px;
 }
 
+section[id] {
+  scroll-margin-top: 80px;
+}
+
 @keyframes loading {
   0% { width: 0%; }
   100% { width: 100%; }
-}
-
-section[id] {
-  scroll-margin-top: 30px;
 }
 
 @keyframes whatsappPulse {
