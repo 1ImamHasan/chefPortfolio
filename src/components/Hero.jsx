@@ -1,26 +1,13 @@
-import { useEffect, useRef } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { siteConfig } from '../data/config'
 
 export default function Hero() {
   const { name, tagline, heroVideo, heroImage } = siteConfig
-  const wrapperRef = useRef(null)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (wrapperRef.current) {
-        const scrollY = window.scrollY
-        wrapperRef.current.style.transform = `scale(1.1) translateY(${scrollY * 0.3}px)`
-      }
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div ref={wrapperRef} className="w-full h-full">
+        <div className="w-full h-full">
           <video
             autoPlay
             muted
