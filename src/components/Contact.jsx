@@ -39,6 +39,8 @@ export default function Contact() {
       formRef.current.reset()
     } catch {
       setStatus('error')
+    } finally {
+      setTimeout(() => setStatus('idle'), 4000)
     }
   }
 

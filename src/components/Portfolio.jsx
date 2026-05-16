@@ -60,10 +60,10 @@ export default function Portfolio() {
           <motion.div className="fixed inset-0 z-[100] bg-black/95 flex justify-center items-center backdrop-blur-sm"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={() => setModal(null)}>
-            <button className="absolute top-6 right-6 text-white hover:text-brand-gold p-2 bg-black/50 rounded-full"
-              onClick={() => setModal(null)}>
-              <X className="w-8 h-8" />
-            </button>
+            <button className="absolute top-6 right-6 text-black hover:text-white p-2 bg-brand-gold hover:bg-amber-700 rounded-full transition-all duration-300"
+  onClick={() => setModal(null)}>
+  <X className="w-8 h-8" />
+</button>
             <motion.img src={modal.src} alt={modal.alt}
               className="max-h-[85vh] max-w-[90vw] object-contain shadow-2xl border border-gray-800 rounded-sm select-none"
               initial={{ scale: 0.85, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
