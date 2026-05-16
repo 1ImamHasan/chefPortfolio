@@ -2,7 +2,7 @@ import { ChevronDown } from 'lucide-react'
 import { siteConfig } from '../data/config'
 
 export default function Hero() {
-  const { name, tagline, heroVideo, heroImage } = siteConfig
+  const { name, tagline, heroVideo, heroImage, heroLabel } = siteConfig
 
   return (
     <section id="home" className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '100svh' }}>
@@ -24,7 +24,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <p className="text-brand-gold font-sans tracking-[0.4em] uppercase text-xs md:text-sm mb-6 font-bold">Trainee Chef</p>
+        <p className="text-brand-gold font-sans tracking-[0.4em] uppercase text-xs md:text-sm mb-6 font-bold">{ heroLabel }</p>
         <h1 className="text-4xl md:text-8xl font-sans font-bold text-white mb-6 tracking-tight leading-tight">
           {name.toUpperCase()}
         </h1>

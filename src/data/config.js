@@ -3,6 +3,7 @@ export const siteConfig = {
   name: 'Imam Hasan',
   title: 'Trainee Chef Portfolio',
   tagline: 'Where Technique Meets Taste.',
+  heroLabel: 'Trainee Chef',
   email: 'mdimamhasanihr@gmail.com',
   phone: '+880 1775 488063',
   location: 'Dhaka, Bangladesh',
