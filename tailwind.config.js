@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const withAlpha = (name) => `rgb(var(${name}) / <alpha-value>)`
+
 export default {
   content: [
     "./index.html",
@@ -7,14 +9,24 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['"Playfair Display"', 'serif'],
-        sans: ['"Lato"', 'sans-serif'],
+        serif: ['var(--font-serif)'],
+        sans: ['var(--font-sans)'],
       },
       colors: {
         brand: {
-          gold: '#d97706',
-          dark: '#1a1a1a',
+          gold: withAlpha('--color-gold'),
+          'gold-dark': withAlpha('--color-gold-dark'),
+          dark: withAlpha('--color-dark'),
+          surface: withAlpha('--color-surface'),
+          raised: withAlpha('--color-raised'),
+          panel: withAlpha('--color-panel'),
+          deep: withAlpha('--color-deep'),
         },
+      },
+      boxShadow: {
+        'gold-soft': '0 0 15px rgb(var(--color-gold) / 0.15)',
+        'gold-mid': '0 0 20px rgb(var(--color-gold) / 0.4)',
+        'gold-strong': '0 0 20px rgb(var(--color-gold) / 0.8)',
       },
     },
   },

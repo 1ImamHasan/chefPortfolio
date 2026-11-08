@@ -4,15 +4,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-gold: 217 119 6;
+    --color-gold-dark: 180 83 9;
+    --color-dark: 26 26 26;
+    --color-surface: 31 31 31;
+    --color-raised: 34 34 34;
+    --color-panel: 44 44 44;
+    --color-deep: 21 21 21;
+    --font-serif: "Playfair Display", serif;
+    --font-sans: "Lato", sans-serif;
+  }
+}
+
 .swiper-pagination-bullet-active {
-  background-color: #d97706 !important;
+  background-color: rgb(var(--color-gold)) !important;
 }
 .swiper-pagination-bullet {
   background-color: #4b5563;
 }
 
 *:focus-visible {
-  outline: 2px solid #d97706;
+  outline: 2px solid rgb(var(--color-gold));
   outline-offset: 2px;
 }
 
