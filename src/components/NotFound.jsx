@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ChefHat, Home } from 'lucide-react'
 
@@ -49,17 +50,20 @@ export default function NotFound() {
           Page not found
         </motion.p>
 
-        <motion.a
-          href="/"
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="group relative px-8 py-4 bg-transparent border border-brand-gold text-brand-gold font-sans uppercase tracking-widest text-sm font-bold overflow-hidden inline-flex items-center gap-3 hover:text-white transition-all"
         >
-          <span className="absolute inset-0 w-0 bg-brand-gold transition-all duration-[250ms] ease-out group-hover:w-full"></span>
-          <Home className="w-4 h-4 relative z-10" />
-          <span className="relative z-10">Back to Home</span>
-        </motion.a>
+          <Link
+            to="/"
+            className="group relative px-8 py-4 bg-transparent border border-brand-gold text-brand-gold font-sans uppercase tracking-widest text-sm font-bold overflow-hidden inline-flex items-center gap-3 hover:text-white transition-all"
+          >
+            <span className="absolute inset-0 w-0 bg-brand-gold transition-all duration-[250ms] ease-out group-hover:w-full"></span>
+            <Home className="w-4 h-4 relative z-10" />
+            <span className="relative z-10">Back to Home</span>
+          </Link>
+        </motion.div>
 
       </div>
     </div>

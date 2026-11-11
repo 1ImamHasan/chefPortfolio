@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay } from 'swiper/modules'
 import { motion } from 'framer-motion'
-import { Award, Quote } from 'lucide-react'
+import { Award, Quote, FileDown } from 'lucide-react'
 import { timeline, certifications, mentors } from '../data/config'
 
 export default function Resume() {
@@ -41,6 +41,22 @@ export default function Resume() {
                   </li>
                 ))}
               </ul>
+            </div>
+
+            <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
+              <a
+                href="/photosImam/resume.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Chef_Imam_Hasan_Resume.jpg"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-brand-gold text-white font-sans text-xs uppercase font-bold tracking-widest rounded-sm hover:bg-amber-600 hover:shadow-[0_0_20px_rgba(217,119,6,0.3)] transition-all duration-300 shadow-md group"
+              >
+                <FileDown className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+                <span>Download Resume / CV</span>
+              </a>
+              <span className="text-gray-500 text-xs italic font-serif text-center sm:text-left">
+                Available for Apprenticeships & Private Dining Events
+              </span>
             </div>
           </motion.div>
 
