@@ -27,13 +27,29 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    // Honeypot check for spam bots
+    if (formRef.current?.bot_field?.value) {
+      setStatus('success')
+      formRef.current.reset()
+      return
+    }
+
     setStatus('loading')
     try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS configuration is missing')
+      }
+
       await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         formRef.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        publicKey
       )
       setStatus('success')
       formRef.current.reset()
@@ -91,26 +107,32 @@ export default function Contact() {
             initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot field for bot spam prevention */}
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="bot_field">Leave this empty</label>
+                <input type="text" id="bot_field" name="bot_field" tabIndex={-1} autoComplete="off" />
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Name</label>
-                  <input type="text" name="name" required placeholder="John Doe" disabled={isLoading}
+                  <input type="text" name="name" required maxLength={100} placeholder="John Doe" disabled={isLoading}
                     className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm disabled:opacity-50 disabled:cursor-not-allowed" />
                 </div>
                 <div>
                   <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Email</label>
-                  <input type="email" name="email" required placeholder="john@example.com" disabled={isLoading}
+                  <input type="email" name="email" required maxLength={100} placeholder="john@example.com" disabled={isLoading}
                     className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm disabled:opacity-50 disabled:cursor-not-allowed" />
                 </div>
               </div>
               <div>
                 <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Subject</label>
-                <input type="text" name="subject" required placeholder="Collaboration / Apprenticeship" disabled={isLoading}
+                <input type="text" name="subject" required maxLength={150} placeholder="Collaboration / Apprenticeship" disabled={isLoading}
                   className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm disabled:opacity-50 disabled:cursor-not-allowed" />
               </div>
               <div>
                 <label className="block text-[10px] font-bold uppercase text-gray-500 mb-2 tracking-widest">Message</label>
-                <textarea name="message" rows="4" required placeholder="How can I help you?" disabled={isLoading}
+                <textarea name="message" rows="4" required maxLength={2000} placeholder="How can I help you?" disabled={isLoading}
                   className="w-full bg-[#151515] border border-gray-700 p-4 text-white focus:border-brand-gold focus:outline-none transition-colors text-sm rounded-sm disabled:opacity-50 disabled:cursor-not-allowed" />
               </div>
               {status === 'success' && (
