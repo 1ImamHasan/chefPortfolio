@@ -18,31 +18,36 @@ import DishManager from './DishManager'
 import RecipeManager from './RecipeManager'
 import ProfileManager from './ProfileManager'
 
-const DEFAULT_PASSCODE = 'chef2026'
-
 export default function AdminDashboard() {
   const { siteConfig, dishes, recipes, certifications, mentors } = usePortfolio()
-  const [authenticated, setAuthenticated] = useState(() => {
-    return sessionStorage.getItem('chef_admin_auth') === 'true'
-  })
+  const [authenticated, setAuthenticated] = useState(
+    () => !!sessionStorage.getItem('chef_admin_token')
+  )
   const [passcode, setPasscode] = useState('')
   const [authError, setAuthError] = useState(false)
   const [activeTab, setActiveTab] = useState('dishes')
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
-    if (passcode === DEFAULT_PASSCODE) {
+    try {
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: passcode }),
+      })
+      if (!res.ok) throw new Error()
+      const { token } = await res.json()
+      sessionStorage.setItem('chef_admin_token', token)
       setAuthenticated(true)
-      sessionStorage.setItem('chef_admin_auth', 'true')
       setAuthError(false)
-    } else {
+    } catch {
       setAuthError(true)
     }
   }
 
   const handleLogout = () => {
     setAuthenticated(false)
-    sessionStorage.removeItem('chef_admin_auth')
+    sessionStorage.removeItem('chef_admin_token')
   }
 
   // Passcode Login Screen
@@ -69,7 +74,7 @@ export default function AdminDashboard() {
                   setPasscode(e.target.value)
                   setAuthError(false)
                 }}
-                placeholder="Enter passcode (default: chef2026)"
+                placeholder="Enter admin password"
                 className="w-full bg-[#121212] border border-gray-700 p-3.5 text-center text-white tracking-widest text-lg rounded-sm focus:border-brand-gold focus:outline-none"
               />
               {authError && (

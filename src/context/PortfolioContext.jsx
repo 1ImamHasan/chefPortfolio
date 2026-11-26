@@ -23,23 +23,31 @@ export function PortfolioProvider({ children }) {
     }
   })
 
-  const [dishes, setDishes] = useState(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEYS.DISHES)
-      return saved ? JSON.parse(saved) : initialData.dishes
-    } catch {
-      return initialData.dishes
-    }
+  const [dishes, setDishes] = useState(initialData.dishes)
+  const [recipes, setRecipes] = useState(initialData.recipes)
+
+  const authHeaders = () => ({
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${sessionStorage.getItem('chef_admin_token') || ''}`,
   })
 
-  const [recipes, setRecipes] = useState(() => {
+  const loadFromApi = async () => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEYS.RECIPES)
-      return saved ? JSON.parse(saved) : initialData.recipes
+      const [d, r] = await Promise.all([
+        fetch('/api/dishes').then((x) => (x.ok ? x.json() : Promise.reject())),
+        fetch('/api/recipes').then((x) => (x.ok ? x.json() : Promise.reject())),
+      ])
+      if (d.length) setDishes(d)
+      if (r.length) setRecipes(r)
     } catch {
-      return initialData.recipes
+      /* API down: fall back to config.js data */
     }
-  })
+  }
+
+  useEffect(() => {
+    loadFromApi()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const [timeline, setTimeline] = useState(() => {
     try {
@@ -72,46 +80,37 @@ export function PortfolioProvider({ children }) {
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEYS.CONFIG, JSON.stringify(siteConfig))
-      localStorage.setItem(STORAGE_KEYS.DISHES, JSON.stringify(dishes))
-      localStorage.setItem(STORAGE_KEYS.RECIPES, JSON.stringify(recipes))
       localStorage.setItem(STORAGE_KEYS.TIMELINE, JSON.stringify(timeline))
       localStorage.setItem(STORAGE_KEYS.CERTIFICATIONS, JSON.stringify(certifications))
       localStorage.setItem(STORAGE_KEYS.MENTORS, JSON.stringify(mentors))
     } catch (e) {
       console.warn('Unable to persist to localStorage:', e)
     }
-  }, [siteConfig, dishes, recipes, timeline, certifications, mentors])
+  }, [siteConfig, timeline, certifications, mentors])
 
   // Dynamic categories computed from active dishes
   const categories = ['All', ...new Set(dishes.map((d) => d.category))]
 
-  // Dish actions
-  const addDish = (dish) => {
-    const id = dish.id || dish.title.toLowerCase().replace(/[^a-z0-9]/g, '-') + '-' + Date.now()
-    setDishes((prev) => [ { ...dish, id }, ...prev ])
+  // API actions
+  const slug = (t) => t.toLowerCase().replace(/[^a-z0-9]/g, '-') + '-' + Date.now()
+
+  const callApi = async (url, method, body) => {
+    const res = await fetch(url, {
+      method,
+      headers: authHeaders(),
+      body: body ? JSON.stringify(body) : undefined,
+    })
+    if (!res.ok) throw new Error(res.status === 401 ? 'Session expired. Please log in again.' : 'Save failed')
+    await loadFromApi()
   }
 
-  const updateDish = (id, updated) => {
-    setDishes((prev) => prev.map((d) => (d.id === id ? { ...d, ...updated } : d)))
-  }
+  const addDish = (dish) => callApi('/api/dishes', 'POST', { ...dish, id: dish.id || slug(dish.title) })
+  const updateDish = (id, u) => callApi(`/api/dishes?id=${id}`, 'PUT', u)
+  const deleteDish = (id) => callApi(`/api/dishes?id=${id}`, 'DELETE')
 
-  const deleteDish = (id) => {
-    setDishes((prev) => prev.filter((d) => d.id !== id))
-  }
-
-  // Recipe actions
-  const addRecipe = (recipe) => {
-    const id = recipe.id || recipe.title.toLowerCase().replace(/[^a-z0-9]/g, '-') + '-' + Date.now()
-    setRecipes((prev) => [ { ...recipe, id }, ...prev ])
-  }
-
-  const updateRecipe = (id, updated) => {
-    setRecipes((prev) => prev.map((r) => (r.id === id ? { ...r, ...updated } : r)))
-  }
-
-  const deleteRecipe = (id) => {
-    setRecipes((prev) => prev.filter((r) => r.id !== id))
-  }
+  const addRecipe = (recipe) => callApi('/api/recipes', 'POST', { ...recipe, id: recipe.id || slug(recipe.title) })
+  const updateRecipe = (id, u) => callApi(`/api/recipes?id=${id}`, 'PUT', u)
+  const deleteRecipe = (id) => callApi(`/api/recipes?id=${id}`, 'DELETE')
 
   // Reset to original data
   const resetToDefaults = () => {
