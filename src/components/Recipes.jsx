@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Clock, ChefHat, Utensils, X, Sparkles, ChevronRight } from 'lucide-react'
-import { recipes } from '../data/config'
+import { usePortfolio } from '../context/PortfolioContext'
 
 const difficultyColor = {
   Beginner: 'text-green-400 border-green-400/30 bg-green-400/10',
@@ -10,6 +10,7 @@ const difficultyColor = {
 }
 
 export default function Recipes() {
+  const { recipes } = usePortfolio()
   const [activeRecipe, setActiveRecipe] = useState(null)
 
   useEffect(() => {

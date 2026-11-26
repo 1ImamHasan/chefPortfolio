@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ZoomIn, X } from 'lucide-react'
-import { dishes, categories } from '../data/config'
+import { usePortfolio } from '../context/PortfolioContext'
 
 export default function Portfolio() {
+  const { dishes, categories } = usePortfolio()
   const [modal, setModal] = useState(null)
   const [active, setActive] = useState('All')
   const filtered = active === 'All' ? dishes : dishes.filter(d => d.category === active)

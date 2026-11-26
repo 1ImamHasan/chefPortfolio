@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { UtensilsCrossed, Flame, Award, ChefHat } from 'lucide-react'
-import { siteConfig } from '../data/config'
+import { usePortfolio } from '../context/PortfolioContext'
 
 const SKILL_ICONS = { UtensilsCrossed, Flame, Award, ChefHat }
 
@@ -42,6 +42,7 @@ function SkillBar({ name, level }) {
 }
 
 export default function About() {
+  const { siteConfig } = usePortfolio()
   const { name } = siteConfig
   return (
     <section id="about" className="py-16 md:py-24 bg-[#1f1f1f]">

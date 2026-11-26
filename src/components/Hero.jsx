@@ -1,9 +1,10 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
-import { siteConfig } from '../data/config'
+import { usePortfolio } from '../context/PortfolioContext'
 
 export default function Hero() {
+  const { siteConfig } = usePortfolio()
   const { name, tagline, heroVideo, heroImage, heroLabel } = siteConfig
   const [videoError, setVideoError] = useState(false)
   const [isMobile, setIsMobile] = useState(() => {
