@@ -29,6 +29,7 @@ dist-ssr
 # Test & Audit Reports
 *.report.html
 .eslintcache
+*.zip
 
 # Environment configuration
 .env
