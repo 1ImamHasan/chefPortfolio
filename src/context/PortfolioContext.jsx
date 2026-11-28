@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 import * as initialData from '../data/config'
 
 const PortfolioContext = createContext(null)
@@ -26,29 +26,6 @@ export function PortfolioProvider({ children }) {
   const [dishes, setDishes] = useState(initialData.dishes)
   const [recipes, setRecipes] = useState(initialData.recipes)
 
-  const authHeaders = () => ({
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${sessionStorage.getItem('chef_admin_token') || ''}`,
-  })
-
-  const loadFromApi = async () => {
-    try {
-      const [d, r] = await Promise.all([
-        fetch('/api/dishes').then((x) => (x.ok ? x.json() : Promise.reject())),
-        fetch('/api/recipes').then((x) => (x.ok ? x.json() : Promise.reject())),
-      ])
-      if (d.length) setDishes(d)
-      if (r.length) setRecipes(r)
-    } catch {
-      /* API down: fall back to config.js data */
-    }
-  }
-
-  useEffect(() => {
-    loadFromApi()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   const [timeline, setTimeline] = useState(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.TIMELINE)
@@ -75,6 +52,28 @@ export function PortfolioProvider({ children }) {
       return initialData.mentors
     }
   })
+
+  const authHeaders = () => ({
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${sessionStorage.getItem('chef_admin_token') || ''}`,
+  })
+
+  const loadFromApi = useCallback(async () => {
+    try {
+      const [d, r] = await Promise.all([
+        fetch('/api/dishes').then((x) => (x.ok ? x.json() : Promise.reject())),
+        fetch('/api/recipes').then((x) => (x.ok ? x.json() : Promise.reject())),
+      ])
+      if (d?.length) setDishes(d)
+      if (r?.length) setRecipes(r)
+    } catch {
+      /* API down: fall back to config.js data */
+    }
+  }, [])
+
+  useEffect(() => {
+    loadFromApi()
+  }, [loadFromApi])
 
   // Synchronize state changes to localStorage
   useEffect(() => {
@@ -180,6 +179,7 @@ export const recipes = ${JSON.stringify(recipes, null, 2)}
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function usePortfolio() {
   const context = useContext(PortfolioContext)
   if (!context) {

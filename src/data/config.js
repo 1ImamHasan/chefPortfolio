@@ -22,7 +22,7 @@ export const dishes = [
   { id: 'choc-tart', src: 'https://images.unsplash.com/photo-1559506974-7a81214baaf7?q=80&w=800', alt: 'Dark Chocolate Tart', category: 'Pastry', title: 'Dark Chocolate Tart' },
   { id: 'saffron-risotto', src: 'https://images.unsplash.com/photo-1626805673863-3b256b3333b6?q=80&w=800', alt: 'Saffron Risotto', category: 'Italian', title: 'Saffron Risotto' },
   { id: 'herb-lamb', src: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800', alt: 'Herb Crusted Lamb', category: 'Main Course', title: 'Herb Crusted Lamb' },
-  { id: 'lobster-paragon', src: '/recentDishOfMeImages/LobsterParagon.jpg', alt: 'Lobster Paragon', category: 'Seafood', title: 'Lobster Paragon' },
+  { id: 'lobster-paragon', src: '/recentDishOfMeImages/LobsterParagon.webp', alt: 'Lobster Paragon', category: 'Seafood', title: 'Lobster Paragon' },
   { id: 'mushroom-foam', src: 'https://images.unsplash.com/photo-1569246294372-ed319c674f14?q=80&w=800', alt: 'Wild Mushroom Foam', category: 'Molecular', title: 'Wild Mushroom Foam' },
 ]
 
@@ -41,7 +41,7 @@ export const certifications = [
 ]
 
 export const mentors = [
-  { id: 'daniel', quote: 'Imam possesses a rare combination of creativity and discipline. His ability to adapt quickly in a high-pressure kitchen environment is impressive.', name: 'Daniel C Gomes', role: 'Exec Chef, ICI', img: '/mentorsImages/danielCgomes.png' },
+  { id: 'daniel', quote: 'Imam possesses a rare combination of creativity and discipline. His ability to adapt quickly in a high-pressure kitchen environment is impressive.', name: 'Daniel C Gomes', role: 'Exec Chef, ICI', img: '/mentorsImages/danielCgomes.webp' },
   { id: 'shamchul', quote: 'I have seen Imam grow from a student to a capable culinarian. His plating skills and understanding of flavor profiles are well beyond his years.', name: 'Shamchul Haque', role: 'Exec Chef, TasteBud', img: 'https://ui-avatars.com/api/?name=Shamchul+Haque&background=d97706&color=fff&size=200' },
 ]
 

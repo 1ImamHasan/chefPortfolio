@@ -53,8 +53,11 @@ export default function About() {
             initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <div className="absolute inset-0 border-2 border-brand-gold transform translate-x-4 translate-y-4 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2 hidden md:block" />
-            <img src="/photosImam/resume.jpg" alt={`${name} Chef Profile`} loading="lazy"
-              className="w-full h-[500px] object-cover relative z-10 shadow-2xl" />
+            <picture>
+              <source srcSet="/photosImam/resume.webp" type="image/webp" />
+              <img src="/photosImam/resume.jpg" alt={`${name} Chef Profile`} loading="lazy"
+                className="w-full h-[500px] object-cover relative z-10 shadow-2xl" />
+            </picture>
           </motion.div>
 
           <motion.div className="w-full md:w-1/2"

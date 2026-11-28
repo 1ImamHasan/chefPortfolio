@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   ChefHat,
@@ -8,10 +8,8 @@ import {
   ExternalLink,
   LogOut,
   Lock,
-  Layers,
   Award,
   Users,
-  ShieldCheck,
 } from 'lucide-react'
 import { usePortfolio } from '../../context/PortfolioContext'
 import DishManager from './DishManager'
@@ -19,7 +17,7 @@ import RecipeManager from './RecipeManager'
 import ProfileManager from './ProfileManager'
 
 export default function AdminDashboard() {
-  const { siteConfig, dishes, recipes, certifications, mentors } = usePortfolio()
+  const { dishes, recipes, certifications, mentors } = usePortfolio()
   const [authenticated, setAuthenticated] = useState(
     () => !!sessionStorage.getItem('chef_admin_token')
   )

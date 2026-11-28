@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Check, Download, RotateCcw, Copy, ExternalLink } from 'lucide-react'
+import { Check, Download, RotateCcw, Copy } from 'lucide-react'
 import { usePortfolio } from '../../context/PortfolioContext'
 
 export default function ProfileManager() {

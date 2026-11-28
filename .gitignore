@@ -26,6 +26,10 @@ dist-ssr
 # Local Netlify folder
 .netlify
 
+# Test & Audit Reports
+*.report.html
+.eslintcache
+
 # Environment configuration
 .env
 .env.local
